@@ -79,46 +79,79 @@ public class IntegerPalindrome {
 		Assert.assertTrue(isIntegerPalindrome(data));
 		Assert.assertTrue(isIntegerPalindromeUsingString(data));
 	}
+	@Test
+	public void testData05()
+	{
+		int data = -74;
+		Assert.assertFalse(isIntegerPalindrome(data));
+		Assert.assertFalse(isIntegerPalindromeUsingString(data));
+	}
 	
-	/* create a variable rev and initialize as 0
+	
+	/* create a variable reverseInput and initialize as 0
 	 * Create variable data and assign the value of input
+	 * Create a variable isInputNegative and make it as true if the input is negative
 	 * Using while loop till data not equal to zero
-	 *  find the remainder of number % 10
-	 *  in the variable rev * 10 and add rem
-	 *  Update the number / 10 
-	 * Check if input and rev are equal if equal return true else false
+	 *  find the remainder by data % 10 and assign to variable remainder
+	 *  Multiply reverseInput by 10 and add remainder to reverseInput
+	 *  Divide inputData by 10 and update the variable inputData
+	 * Multiply reverse number -1 if the isInputNegative is true
+	 * Check if input and reverseInput are equal if equal return true else false
+	 * 
+	 * Time : O(n)
+	 * Space : O(1)
 	 */
 	private boolean isIntegerPalindrome(int input) {
-		int rev = 0;
+		int reverseInput = 0;
 		if(input >0 && input < 10) return true; 
-		int data = input;
-		while(data!=0)
+		int inputData = input;
+		boolean isInputNegative = false;
+		if (inputData < -9)
 		{
-			int rem = data % 10;
-			rev = rev * 10 + rem;
-			data = data / 10;
+		 inputData *= -1;
+		 isInputNegative = true;
+		}
+		while(inputData!=0)
+		{
+			int remainder = inputData % 10;
+			reverseInput = reverseInput * 10 + remainder;
+			inputData = inputData / 10;
 			
 		}
-		System.out.println("input" + " :" + input + " Output : "+ rev);
-		if (rev == input) return true;
+		reverseInput = isInputNegative ? (reverseInput * -1) : reverseInput;
+		if (reverseInput == input) return true;
 		return false;
 	}
 	
-	/* Convert the input to string
-	 * Reverse and store it in a another string
-	 * Parse to int and check if equals return true or false
+	/* Check if the input is single digit, if yes -  return true
+	 * Create a boolean isInputNegative as assign as false 
+	 * if the value is negative, update isInputNegative as true and multiple input by -1
+	 * Create variable reverseInput as ""
+	 * Convert the input to string and assign to a new variable convertInput
+	 * Reverse and store it in reverseInput
+	 * Check if isInputNegative is true, if yes  Multiple by -1 and parse the value
+	 *   if no, parse the value and compare with input
+	 *   if true then multiple by -1 and compare with input
+	 *   Time : O(n)
+	 *   Space : O(n)
 	 */
 	private boolean isIntegerPalindromeUsingString(int input) {
 		if(input >-10 && input < 10) return true;
-		String rev = "";
-		String convertInput = "" + input;
+		boolean isInputNegative = false;
+		int inputData = input;
+		if (input < -9)
+		{
+		 inputData *= -1;
+		 isInputNegative = true;
+		}
+		String reverseInput = "";
+		String convertInput = "" + inputData;
 		for (int i = convertInput.length()-1; i >=0 ; i--) 
 		{
-		  rev += convertInput.charAt(i);	
+		  reverseInput += convertInput.charAt(i);	
 		}
-		if(Integer.parseInt(rev)==input) return true;
-		System.out.println(Integer.parseInt(rev));
-		System.out.println("Input : "+ input + " Output: "+Integer.parseInt(convertInput));
+		int checkVal = isInputNegative? (Integer.parseInt(reverseInput) * -1) : (Integer.parseInt(reverseInput));
+		if(checkVal == input) return true;
 		return false;		 
 		
 	}

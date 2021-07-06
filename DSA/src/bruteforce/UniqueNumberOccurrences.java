@@ -126,7 +126,7 @@ public class UniqueNumberOccurrences {
 				for (int j = i + 1; j < data.length; j++) { // Iterate using inner array
 					if (data[i] == data[j]) // If i and j are equals increment counter
 					{
-						counter++; // and making j value equal to marker value
+						counter++; // and making j v3alue equal to marker value
 						data[j] = marker;
 					}
 				}
