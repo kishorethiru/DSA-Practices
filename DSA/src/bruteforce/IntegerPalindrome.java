@@ -68,7 +68,7 @@ public class IntegerPalindrome {
 	{
 		int data = 1000;
 		Assert.assertFalse(isIntegerPalindrome(data));
-		Assert.assertTrue(isIntegerPalindromeUsingString(data));
+		Assert.assertFalse(isIntegerPalindromeUsingString(data));
 	
 	}
 	
