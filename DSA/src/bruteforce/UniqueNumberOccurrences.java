@@ -53,6 +53,7 @@ public class UniqueNumberOccurrences {
 	public void testData01()
 	{
 		int[] data = {1,2,3,1,1,3};
+		// 1 => 3, 2 => 1 3=> 2 => [3,1,2]=
 		Assert.assertTrue(isUniqueOccurrencesPresent(data));
 		Assert.assertTrue(isUniqueOccurrencesPresentHashMap(new int[]{1,2,3,1,1,3}));
 		
@@ -131,7 +132,6 @@ public class UniqueNumberOccurrences {
 					}
 				}
 				occurrenceArr[index++] = counter;
-				data[i] = marker; // Making the current value (i) to marker value
 			}
 		}
 		int[] resultArr = Arrays.copyOf(occurrenceArr, index); // Making the occurenceArr of items till it filled
