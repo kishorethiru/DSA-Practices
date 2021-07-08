@@ -2,8 +2,6 @@ package bruteforce;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -46,10 +44,14 @@ public class FindMajorityElement
 5.  Do I know alternate solutions as well
        Approach 1: Brute Force 
        Approach 2:HashMap 
+       Approach 3 : Hashmap with single pass
+       Approach 4 : Sort the input and using midpoint 
 
 6. If you know the alternate solution find out the O-notations (performance)
  	   Approach 1: Brute Force => O(n^2), O(1)
        Approach 2:HashMap => O(n), O(n)
+       Approach 3 : Hashmap with single pass = > O(n), O(n)
+       Approach 4 : Sort the input and using midpoint => O(1), O(1)
 7. Then, explain either both are the best (depends on the time)
         Approach 1:- start with the worst-> improve (optimize) ->  End up with the best
         Approach 2: Write down the options and benefits and code the best
@@ -63,8 +65,9 @@ public class FindMajorityElement
 	public void testData01() 
 	{
 		int[] data = {1,2,2,2,2};
-		Assert.assertTrue(findMajorityElement(data)==2);
-		Assert.assertTrue(findMajorityElementUsingMap(new int[]{1,2,2,2,2})==2);
+//		Assert.assertTrue(findMajorityElement(data)==2);
+//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{1,2,2,2,2})==2);
+		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{1,2,2,2,2})==2);
 		
 	}
 	
@@ -72,17 +75,29 @@ public class FindMajorityElement
 	public void testData02() 
 	{
 		int[] data = {1,1,2,3,3,3,3,3,3};
-		Assert.assertTrue(findMajorityElement(data)==3);
-		Assert.assertTrue(findMajorityElementUsingMap(new int[]{1,1,2,3,3,3,3,3,3})==3);
+//		Assert.assertTrue(findMajorityElement(data)==3);
+//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{1,1,2,3,3,3,3,3,3})==3);
+		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{1,1,2,3,3,3,3,3,3})==3);
+		
 		
 	}
 	
 	@Test
 	public void testData03() 
 	{
-		int[] data = {3,2,2,3,3,3};
-		Assert.assertTrue(findMajorityElement(data)==3);
-		Assert.assertTrue(findMajorityElementUsingMap(new int[]{3,2,2,3,3,3})==3);
+		int[] data = {2,2,2,3,3,3};
+//		Assert.assertTrue(findMajorityElement(data)==0);
+//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{2,2,2,3,3,3}) == 0);
+		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{2,2,2,3,3,3}) == 0);
+	}
+	
+	@Test
+	public void testData04() 
+	{
+		int[] data = {2,2,3,3,4,4};
+//		Assert.assertTrue(findMajorityElement(data)==0);
+//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{2,2,3,3,4,4})==0);
+		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{2,2,3,3,4,4})==0);
 	}
 	
 	/*
@@ -155,8 +170,51 @@ public class FindMajorityElement
 		for (Map.Entry<Integer, Integer> i : inputData.entrySet()) {
 			if(i.getValue() > (data.length >> 1)) return i.getKey(); 
 		}
-		return 0;
-		
+		return 0;	
+	}
+	
+	/* Pseudocode - Hashmap Singlepass
+	 * Create variable length and store the length of input
+	 * Create a Hash map
+	 * Iterate the input and add into the map with <K,V>
+	 *  After adding to the m, check if the current element value is
+	 *   greater than n/2 if > return the current element
+	 * At the end throw new RunTimeException
+	 * Time : O(n)
+	 * Space : O(n) 
+	 */
+	
+	private int findMajorityElementUsingMapSinglepass(int[] data)
+	{
+		int inputSize = data.length;
+		Map<Integer, Integer> dataMap = new HashMap<>();
+		for (int i = 0; i < data.length; i++) 
+		{
+			dataMap.put(data[i], dataMap.getOrDefault(data[i], 0) + 1);
+			if(dataMap.get(data[i]) > inputSize >> 1) return data[i];
+		}
+		throw new RuntimeException("Invalid Input Data");
+	}
+	
+	/* Pseudocode - Sort and midpoint
+	 * Create a variable length and store the size of input
+	 * Check if the  n / 2 is even return the mid point value
+	 *       if n/2 is odd check if mid point and mid point + 1 are same 
+	 *       if same return the mid point value
+	 * Time : O(1)
+	 * Space : O (1)      
+	 */
+	
+	private int findMajorityElementUsingMidpoint(int[] data)
+	{
+		int length = data.length;
+		if(length == 0) throw new RuntimeException("Invalid Input Data");
+		if(length%2 == 0) return data[length/2];
+		else
+		{
+			if(data[length/2] == data[(length/2) + 1]) return data[length/2];
+		}
+		throw new RuntimeException("Invalid Input Data");	
 	}
 
 }
