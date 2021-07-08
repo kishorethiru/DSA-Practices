@@ -164,7 +164,7 @@ public class UniqueNumberOccurrences {
 		Map<Integer, Integer> map =  new HashMap<>();
 		for (int i = 0; i < data.length; i++) 
 		{
-			map.put(data[i], map.getOrDefault(data[i], 0)+1);//Check  getOrDefault
+			map.put(data[i], map.getOrDefault(data[i], 0)+1);
 		}
 		Set<Integer> occurrencesSet = new HashSet<>();
 		for (int i : map.values()) {

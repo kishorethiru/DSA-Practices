@@ -47,11 +47,13 @@ public class FindUniqueArrayIntersection
 5.  Do I know alternate solutions as well
        Approach 1 : Brute forc using with iterations
        Approach 2 : Using Hash Map, Set 
+       Approach 3 : Sort array and comparing the each elements in array in Single pass
 
 6. If you know the alternate solution find out the O-notations (performance)
 7. Then, explain either both are the best (depends on the time)
-        Approach 1:- O[N*M]
+        Approach 1:- O[n*m]
         Approach 2: O[m+n]
+        Approach 3 : O(n)
 8. Start always with the Pseudo code
 9. Test against different test data
 10. If it fails then debug to solve it
@@ -63,8 +65,9 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {1,2,2,1};
 		int[] data2 = {2,2};
 		int[] op = {2};
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 		
 	}
 	@Test
@@ -73,71 +76,54 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {1,2,3,4,5,3,4,5};
 		int[] data2 = {3,4,5,3,4,5};
 		int[] op = {3,4,5};
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 		
-	}
-	
+	}	
 	@Test
 	public void testData03()
-	{
-		int[] data1 = {7,8};
-		int[] data2 = {1,2,3,4,5,7};
-		int[] op = {7};
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
-		
-	}
-	
-	@Test
-	public void testData04()
 	{
 		int[] data1 = {10,9,11,10,12};
 		int[] data2 = {1,2,3,4,5,7};
 		int[] op = {};
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 		
 	}
 	@Test
-	public void testData05()
+	public void testData04()
 	{
 		int[] data1 = {1};
 		int[] data2 = {2};
 		int[] op = {};
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
 	
 	@Test
-	public void testData06()
+	public void testData05()
 	{
-		int[] data1 = {};
-		int[] data2 = {2};
-		int[] op = {};		
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		int[] data1 = {7,8,9,10};
+		int[] data2 = {9,2,3,4,7,12,16,18};
+		int[] op = {7,9};		
+//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), new int[] {9,7});
+		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
 	@Test
-	public void testData07()
+	public void testData06()
 	{
 		int[] data1 = {1};
 		int[] data2 = {};
 		int[] op = {};	
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
 	
-	@Test
-	public void testData08()
-	{
-		int[] data1 = {};
-		int[] data2 = {};
-		int[] op = {};	
-		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
-		
-	}
 	/* Pseudocode
 	 * Pre-Checks
 	 *   if any one of array or both is empty return corresponding empty array
@@ -152,7 +138,7 @@ public class FindUniqueArrayIntersection
 	 *    Insert to the new array after checking if its availability in the return array, increment the index
 	 * Return the array by copying it till index 
 	 * Time : O(m*n*o)
-	 * Space : O(o) + O(1)  => O(o)
+	 * Space : O(m or n) + O(1) + O(n)  => O(o)
 	 */
 	
 	private int[] getUniqueArrayInterSection(int[] data1, int[] data2) {
@@ -215,7 +201,7 @@ public class FindUniqueArrayIntersection
 	 * Return the array till the values are filled
 	 * 
 	 * Time => O(m) + O(n*o) => O(n*o)
-	 * Space => O(n) + O(o) => O(n)
+	 * Space => O(n) + O(o^2) => O(n)
 	 */
 	
 	private int[] getUniqueArrayInterSectionUsingSet(int[] data1, int[] data2) 
@@ -247,6 +233,61 @@ public class FindUniqueArrayIntersection
 		}
 		return Arrays.copyOf(returnArr, arraySize);
 	}
+	
+	/* Pseudocode - Using Sorting
+	 * Pre-Checks
+	 *   if any one of array or both is empty return empty array
+	 *   if both array length are same and if both are equal return the element in array
+	 *    else return empty array
+	 * Sort the two arrays
+	 * Create a set
+	 * Initialize two variables inputOnePtr and inputTwoPtr
+	 * Iterate the two inputs till it reaches the end
+	 *  if inputOnePtr element == inputTwoPtr element, increment both variables and add to set 
+	 *  if inputOnePtr element is greater >  inputTwoPtr element increment inputTwoPtr
+	 *  else increment inputOnePtr
+	 * Push the element in set to array and return it 
+	 * 
+	 * Time : O(m or n) + mlogm + nlogn => O(m or n)
+	 * Space : O(m or n) input data + O(m or n) set + O(m or n) - retarray +  O(m or n) - retSet=> O(m or n)
+	 */
+	
+	private int[] uniqueArrayIntersectionWithSort(int[] data1, int[] data2)
+	{
+		int data1Length = data1.length;
+		int data2Length = data2.length;
+		if (data1Length == 0 || data2Length == 0)
+			return new int[] {};
+		if (data1Length == 1 || data2Length == 1) {
+			if (data1[0] == data2[0])
+				return new int[] { data1[0] };
+			else
+				return new int[] {};
+		}
+		Arrays.sort(data1);
+		Arrays.sort(data2);
+		Set<Integer> returnSet = new HashSet<>();
+		int data1Ptr = 0, data2Ptr = 0;
+		while(data1Ptr < data1Length && data2Ptr < data2Length)
+		{
+			if(data1[data1Ptr] == data2[data2Ptr])
+			{	
+				returnSet.add(data1[data1Ptr]);
+				data1Ptr++;
+				data2Ptr++;
+			}
+			else if(data1[data1Ptr] > data2[data2Ptr]) data2Ptr++;
+			else data1Ptr++;
+		}
+		int[] returnArr = new int[returnSet.size()];
+		int index = 0;
+		for (int i : returnSet) 
+		{
+		 returnArr[index++] = i;	
+		}
+		return returnArr;
+	}
+	
 	
 	
 	
