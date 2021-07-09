@@ -67,7 +67,6 @@ public class FindMaximumInArray {
 		int[] data = {1,1,1,1,1};
 		Assert.assertTrue(findMaxInData(data) == 1);
 		Assert.assertTrue(findMaxInDataWithoutInbuildFn(data) == 1);
-		
 	}
 	@Test
 	public void testData04()

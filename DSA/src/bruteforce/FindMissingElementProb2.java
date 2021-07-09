@@ -55,7 +55,6 @@ Approach 3: O(n)
 	public void testData01() {
 		int[] data = {24,25,22,23,27};
 		Assert.assertTrue(findMissingElementUsingSort(data) == 26);
-
 	}
 
 	@Test(expected = RuntimeException.class)

@@ -180,6 +180,4 @@ Simple technique brute force
 		}
 		return -1;	
 	}
-		
-
 }
