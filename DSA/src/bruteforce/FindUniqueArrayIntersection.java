@@ -65,8 +65,8 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {1,2,2,1};
 		int[] data2 = {2,2};
 		int[] op = {2};
-//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 		
 	}
@@ -76,8 +76,8 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {1,2,3,4,5,3,4,5};
 		int[] data2 = {3,4,5,3,4,5};
 		int[] op = {3,4,5};
-//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 		
 	}	
@@ -87,8 +87,8 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {10,9,11,10,12};
 		int[] data2 = {1,2,3,4,5,7};
 		int[] op = {};
-//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 		
 	}
@@ -98,8 +98,8 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {1};
 		int[] data2 = {2};
 		int[] op = {};
-//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
 	
@@ -109,8 +109,8 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {7,8,9,10};
 		int[] data2 = {9,2,3,4,7,12,16,18};
 		int[] op = {7,9};		
-//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), new int[] {9,7});
+		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), new int[] {9,7});
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
 	@Test
@@ -119,8 +119,8 @@ public class FindUniqueArrayIntersection
 		int[] data1 = {1};
 		int[] data2 = {};
 		int[] op = {};	
-//		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
-//		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSection(data1,data2), op);
+		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
 	

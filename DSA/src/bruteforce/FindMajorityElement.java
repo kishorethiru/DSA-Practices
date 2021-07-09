@@ -65,8 +65,8 @@ public class FindMajorityElement
 	public void testData01() 
 	{
 		int[] data = {1,2,2,2,2};
-//		Assert.assertTrue(findMajorityElement(data)==2);
-//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{1,2,2,2,2})==2);
+		Assert.assertTrue(findMajorityElement(data)==2);
+		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{1,2,2,2,2})==2);
 		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{1,2,2,2,2})==2);
 		
 	}
@@ -75,28 +75,28 @@ public class FindMajorityElement
 	public void testData02() 
 	{
 		int[] data = {1,1,2,3,3,3,3,3,3};
-//		Assert.assertTrue(findMajorityElement(data)==3);
-//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{1,1,2,3,3,3,3,3,3})==3);
+		Assert.assertTrue(findMajorityElement(data)==3);
+		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{1,1,2,3,3,3,3,3,3})==3);
 		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{1,1,2,3,3,3,3,3,3})==3);
 		
 		
 	}
 	
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testData03() 
 	{
 		int[] data = {2,2,2,3,3,3};
-//		Assert.assertTrue(findMajorityElement(data)==0);
-//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{2,2,2,3,3,3}) == 0);
+		Assert.assertTrue(findMajorityElement(data)==0);
+		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{2,2,2,3,3,3}) == 0);
 		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{2,2,2,3,3,3}) == 0);
 	}
 	
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testData04() 
 	{
 		int[] data = {2,2,3,3,4,4};
-//		Assert.assertTrue(findMajorityElement(data)==0);
-//		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{2,2,3,3,4,4})==0);
+		Assert.assertTrue(findMajorityElement(data)==0);
+		Assert.assertTrue(findMajorityElementUsingMapSinglepass(new int[]{2,2,3,3,4,4})==0);
 		Assert.assertTrue(findMajorityElementUsingMidpoint(new int[]{2,2,3,3,4,4})==0);
 	}
 	
@@ -197,6 +197,7 @@ public class FindMajorityElement
 	}
 	
 	/* Pseudocode - Sort and midpoint
+	 * Sort the input
 	 * Create a variable length and store the size of input
 	 * Check if the  n / 2 is even return the mid point value
 	 *       if n/2 is odd check if mid point and mid point + 1 are same 

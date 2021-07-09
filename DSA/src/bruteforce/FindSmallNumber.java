@@ -80,7 +80,7 @@ public class FindSmallNumber {
 		int[] input = {4,0,1,1,3};
 		int[] output = {4,0,1,1,3}; 
 		int[] sorOutput = {0,1,1,3,4};
-//		Assert.assertArrayEquals(findNoOfSmallNumber(input), output);
+		Assert.assertArrayEquals(findNoOfSmallNumber(input), output);
 		Assert.assertArrayEquals(findNoOfSmallNumberUsingSorting(input), sorOutput);
 	}
 	@Test
