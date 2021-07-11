@@ -177,9 +177,9 @@ public class FindElementCount
 		{
 			inputData.put(i, inputData.getOrDefault(i, 0)+1);
 		}
-		for (int i : data) 
+		for (Map.Entry<Integer, Integer> eachItem : inputData.entrySet()) 
 		{
-			if(inputData.containsKey(i+1)) count += inputData.get(i);
+			if(inputData.containsKey(eachItem.getKey()+1)) count += eachItem.getValue();
 		}
 		System.out.println(count);
 		return count;		
