@@ -123,7 +123,7 @@ public class FindUniqueArrayIntersection
 		Assert.assertArrayEquals(getUniqueArrayInterSectionUsingSet(data1,data2), op);
 		Assert.assertArrayEquals(uniqueArrayIntersectionWithSort(data1,data2), op);
 	}
-	
+
 	/* Pseudocode
 	 * Pre-Checks
 	 *   if any one of array or both is empty return corresponding empty array
@@ -248,17 +248,16 @@ public class FindUniqueArrayIntersection
 	 *  else increment inputOnePtr
 	 * Push the element in set to array and return it 
 	 * 
-	 * Time : O(m or n) + mlogm + nlogn => O(m or n)
+	 * Time : O(m or n) + mlogm + nlogn => mlogm
 	 * Space : O(m or n) input data + O(m or n) set + O(m or n) - retarray +  O(m or n) - retSet=> O(m or n)
 	 */
 	
-	private int[] uniqueArrayIntersectionWithSort(int[] data1, int[] data2)
-	{
+	private int[] uniqueArrayIntersectionWithSort(int[] data1, int[] data2) {
 		int data1Length = data1.length;
 		int data2Length = data2.length;
 		if (data1Length == 0 || data2Length == 0)
 			return new int[] {};
-		if (data1Length == 1 || data2Length == 1) {
+		if (data1Length == 1 && data2Length == 1) {
 			if (data1[0] == data2[0])
 				return new int[] { data1[0] };
 			else
@@ -268,22 +267,20 @@ public class FindUniqueArrayIntersection
 		Arrays.sort(data2);
 		Set<Integer> returnSet = new HashSet<>();
 		int data1Ptr = 0, data2Ptr = 0;
-		while(data1Ptr < data1Length && data2Ptr < data2Length)
-		{
-			if(data1[data1Ptr] == data2[data2Ptr])
-			{	
+		while (data1Ptr < data1Length && data2Ptr < data2Length) {
+			if (data1[data1Ptr] == data2[data2Ptr]) {
 				returnSet.add(data1[data1Ptr]);
 				data1Ptr++;
 				data2Ptr++;
-			}
-			else if(data1[data1Ptr] > data2[data2Ptr]) data2Ptr++;
-			else data1Ptr++;
+			} else if (data1[data1Ptr] > data2[data2Ptr])
+				data2Ptr++;
+			else
+				data1Ptr++;
 		}
 		int[] returnArr = new int[returnSet.size()];
 		int index = 0;
-		for (int i : returnSet) 
-		{
-		 returnArr[index++] = i;	
+		for (int i : returnSet) {
+			returnArr[index++] = i;
 		}
 		return returnArr;
 	}
