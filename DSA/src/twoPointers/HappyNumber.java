@@ -71,7 +71,7 @@ public class HappyNumber
 	public void testData02()
 	{
 		Assert.assertEquals(isHappyNumber(2), false);
-		
+
 	}
 	
 	@Test
@@ -93,7 +93,6 @@ public class HappyNumber
 	 * Time : O(m*n)
 	 * Space : O(m)
 	 */
-	
 	private boolean isHappyNumber(int number) {
 		int sumOfSquares = number;
 		Set<Integer> numberSet = new HashSet<>();
