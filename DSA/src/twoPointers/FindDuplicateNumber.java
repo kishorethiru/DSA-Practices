@@ -56,19 +56,31 @@ public class FindDuplicateNumber
 	@Test
 	public void testData01() {
 		int[] data = { 2, 2, 1 };
-		Assert.assertTrue(findDuplicateNumber(data) == 1);
+		Assert.assertTrue(findDuplicateNumberOptimized(data) == 1);
 	}
 
 	@Test
 	public void testData02() {
 		int[] data = { 4, 1, 2, 1, 2 };
-		Assert.assertTrue(findDuplicateNumber(data) == 4);
+		Assert.assertTrue(findDuplicateNumberOptimized(data) == 4);
 	}
 
 	@Test
 	public void testData03() {
 		int[] data = { -1, 2, 2, 3, 4, -1, 4 };
-		Assert.assertTrue(findDuplicateNumber(data) == 3);
+		Assert.assertTrue(findDuplicateNumberOptimized(data) == 3);
+	}
+	
+	@Test
+	public void testData04() {
+		int[] data = { 1,1,2,2 };
+		Assert.assertTrue(findDuplicateNumberOptimized(data) == -1);
+	}
+	
+	@Test
+	public void testData05() {
+		int[] data = { 1,1,3,2,2 };
+		Assert.assertTrue(findDuplicateNumberOptimized(data) == 3);
 	}
 	
 	/* Pseudocode
@@ -94,6 +106,32 @@ public class FindDuplicateNumber
 			else return data[ptr];
 		}
 		return data[ptr];
+	}
+	
+	/* Two pointers - Optimized
+	 *1. Create two pointers left and right
+	 *2. Iterate the input till left < right
+		 *  a) if left and left + 1 are same, increment left by 2
+		 *  b) if right and right - 1 are same, decrement right by 2
+		 *  c) if left and left + 1 are not same, return left value 
+		 *  d) if right and left - 1 are not same, return r value
+	 *3. return -1
+	 * Time : O(n/2) + n log n => n log n
+	 * Space : O(1) 
+	 */
+	private int findDuplicateNumberOptimized(int[] data) {
+		if (data.length < 2)
+			throw new RuntimeException("Invalid Input");
+		Arrays.sort(data);
+		int left = 0, right = data.length-1;
+		while (left < right) 
+		{
+			if(data[left] == data[left+1]) left += 2;
+			if(data[right] == data[right-1]) right -= 2;
+			if(data[left] != data[left+1]) return data[left];
+			if(data[right] != data[right-1]) return data[right];
+		}
+		return -1;
 	}
 
 }
