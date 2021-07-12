@@ -63,21 +63,21 @@ public class HappyNumber
 	@Test
 	public void testData01()
 	{
-		Assert.assertEquals(isHappyNumber(19), true);
+		Assert.assertEquals(isHappyNumberOptmized(19), true);
 		
 	}
 	
 	@Test
 	public void testData02()
 	{
-		Assert.assertEquals(isHappyNumber(2), false);
+		Assert.assertEquals(isHappyNumberOptmized(2), false);
 
 	}
 	
 	@Test
 	public void testData03()
 	{
-		Assert.assertEquals(isHappyNumber(100), true);
+		Assert.assertEquals(isHappyNumberOptmized(100), true);
 	}
 	
 	/* Pseudocode
@@ -108,5 +108,37 @@ public class HappyNumber
 		} while (numberSet.add(sumOfSquares));
 		return false;
 	}
+	
+
+	/*  1. Iterate till the sum of each square is not equal to 4 and 1
+	 *   	a)if sum of square number = 1, return true
+	 *  2. return false 
+	 * 
+	 */
+	private boolean isHappyNumberOptmized(int number) {
+		while(number != 1 && number !=4 ){
+			number = sumAndSquareNumber(number);
+			if(number==1) return true;
+		}
+		return false;
+	}
+	
+	/* 1. Initialize Sum as 0
+	 * 2. Iterate till the n becomes zero
+	 *  	find the last number of the n and square it
+	 *  	find the number other than last digit and update the input
+	 * 3. return sum
+	 * 
+	 */
+	private int sumAndSquareNumber(int n)
+	{
+		int sum  = 0;
+		while (n != 0) {
+			sum += (n % 10) * (n % 10);
+			n /= 10;
+		}
+		return sum;
+	}
+
 
 }
