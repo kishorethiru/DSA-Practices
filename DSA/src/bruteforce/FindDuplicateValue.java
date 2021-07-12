@@ -1,5 +1,6 @@
 package bruteforce;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +49,7 @@ public class FindDuplicateValue {
 	public void testData01() {
 		int[] data = {1,2,3,1};
 		Assert.assertTrue(findDuplicate(data));
+		Assert.assertTrue(findDuplicateOptimized(data));
 
 	}
 
@@ -55,6 +57,7 @@ public class FindDuplicateValue {
 	public void testData02() {
 		int[] data = {1,2,3,4};
 		Assert.assertFalse(findDuplicate(data));
+		Assert.assertFalse(findDuplicateOptimized(data));
 
 	}
 
@@ -62,6 +65,7 @@ public class FindDuplicateValue {
 	public void testData03() {
 		int[] data = {1,1,1,3,3,4,3,2,4,2};
 		Assert.assertTrue(findDuplicate(data));
+		Assert.assertTrue(findDuplicateOptimized(data));
 
 	}
 	
@@ -88,4 +92,30 @@ public class FindDuplicateValue {
 		}
 		return false;
 	}
+	
+	/*
+	 * Sort the array
+	 * Initialize two pointers ptr1 and ptr2
+	 * Iterate the input till  ptr < inputlength 
+	 *  Check if ptr1 and ptr 2 are same
+	 *    Yes, return ptr1 value
+	 *    No, increment ptr1 and ptr2  
+	 * return -1     
+	 * 
+	 * Time : O(n) + n logn => nlogn 
+	 * Space : O(1)
+	 * 
+	 */
+	private boolean findDuplicateOptimized(int[] nums) {
+		Arrays.sort(nums);
+		int ptr1 = 0, ptr2 = 1;
+		while (ptr2 < nums.length) {
+			if (nums[ptr1] == nums[ptr2])
+				return true;
+			ptr1++;
+			ptr2++;
+		}
+		return false;
+	}
+
 }
