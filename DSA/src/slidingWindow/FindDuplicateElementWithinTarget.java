@@ -132,7 +132,7 @@ public class FindDuplicateElementWithinTarget
 		return false;
 	}
 	 
-	/* If target value is > input size , return false
+	/* 
 	 * Create a set
 	 * Iterate the input till the target value 
 	 * 		Add the items to set, if duplicate element found return true
@@ -147,8 +147,6 @@ public class FindDuplicateElementWithinTarget
 	 */
 	 private boolean isDuplicateElementFound(int[] data, int target)
 	 {
-		 if (target > data.length)
-			 return false;
 		 Set<Integer> inputData = new HashSet<>();
 		 for (int i = 0; i <= target; i++) { //Iterate the input till the target value
 			 if (!inputData.add(data[i])) // Add the items to set, if duplicate element found return true
