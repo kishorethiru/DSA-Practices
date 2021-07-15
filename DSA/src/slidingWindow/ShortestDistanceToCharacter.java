@@ -2,8 +2,6 @@ package slidingWindow;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -65,10 +63,10 @@ public class ShortestDistanceToCharacter {
 	public void testData01()
 	{
 		String input = "loveleetcode";
-		
-		
 		char matchChar = 'e';
 		Assert.assertArrayEquals(findShortestLengthTwoPass(input, matchChar),
+				new int[] {3,2,1,0,1,0,0,1,2,2,1,0});
+		Assert.assertArrayEquals(findShortestDistance(input, matchChar),
 				new int[] {3,2,1,0,1,0,0,1,2,2,1,0});
 	}
 	
@@ -78,6 +76,7 @@ public class ShortestDistanceToCharacter {
 		String input = "welcome";
 		char matchChar = 'm';
 		Assert.assertArrayEquals(findShortestLengthTwoPass(input, matchChar), new int[] {5,4,3,2,1,0,1});
+		Assert.assertArrayEquals(findShortestDistance(input, matchChar), new int[] {5,4,3,2,1,0,1});
 	}
 	
 	@Test
@@ -86,6 +85,7 @@ public class ShortestDistanceToCharacter {
 		String input = "rrrrr";
 		char matchChar = 'r';
 		Assert.assertArrayEquals(findShortestLengthTwoPass(input, matchChar), new int[] {0,0,0,0,0});	
+		Assert.assertArrayEquals(findShortestDistance(input, matchChar), new int[] {0,0,0,0,0});
 	}
 	
 	/* if input is empty return empty array
@@ -120,54 +120,15 @@ public class ShortestDistanceToCharacter {
 		return retVal;
 	}
 	
-	/* Pseudocode
-	 * Create two pointers left = 0, right = 0
-	 * Create two variables int lastFoundOccr, isLastOccFound
-	 * Craete retArr of length input
-	 * Iterate the input till left <= input length
-	 *   if left == char,left++
-	 *   else if right != char and right <= input length and !isLastOccFound
-	 *        increment the right till finding char
-	 *   else if left > right increment right
-	 *   else calculate min length and add to retARr
-	 *     
-	 * 
-	 * 
-	 */
 	
-	private int[] findShortestLengthTwoPtr(String input, char mathChar) {
-		int left = 0, right = 0;
-		int lastFoundOccr = Integer.MAX_VALUE;
-		int[] retArr = new int[input.length()];
-		while (left < input.length()) {
-			if (input.charAt(left) == mathChar){
-				lastFoundOccr = right;
-				right = left;
-				retArr[left++] = 0;
-			}
-			else if (input.charAt(right) != mathChar && right < input.length()) {
-				while (right < input.length()) {
-					if (input.charAt(right) == mathChar) {
-						break;
-					}
-					right++;
-				}
-			} else if (left > right && right <=input.length() ) {
-				lastFoundOccr = right++;
-			} else {
-				int minLen = Math.min(Math.abs(lastFoundOccr - left), Math.abs(left - right));
-				retArr[left++] = minLen;
-			}
-		}
-		return retArr;
-	}
-	
-	/* Create a list and push the index of matching char to list
+ 
+	/* Pseudocode - Two Pointers
+	 * Create a list and push the index of matching char to list
 	 * Create array of length string
 	 * Create previousIndex and remove the first index of list , assign the removed value to it
 	 * Create currentIndex and push the value of previousIndex to this
 	 * Iterate the input string
-	 *   If currentElmentIndex > currentIndex and list is not empty
+	 *   If currentElementIndex > currentIndex and list is not empty
 	 *      Assign the value of currrentIndex to previousIndex
 	 *      remove the value of first index from index and assign to currentIndex
 	 *   Find the min length between currentIndex and currentElement and currentElement and previousIndex
@@ -183,15 +144,15 @@ public class ShortestDistanceToCharacter {
 		{
 			if(input.charAt(i) == matchChar) matchIndex.add(i);
 		}
-		if(matchIndex.isEmpty()) throw new RuntimeException("No Matching Char");
+		if(matchIndex.isEmpty()) throw new RuntimeException("No Matching Character Present");
 		int[] retArr = new int[input.length()];
 		int previousIndex = matchIndex.remove(0);
-		int currentIndex =previousIndex; 
+		int currentIndex  = previousIndex; 
 		for (int i = 0; i < input.length(); i++) 
-		{
-			if(i > currentIndex & !matchIndex.isEmpty())
+		{    
+			if(i > currentIndex && !matchIndex.isEmpty())
 			{ 
-				previousIndex = currentIndex;
+				previousIndex = currentIndex; 
 				currentIndex = matchIndex.remove(0);
 			}
 			retArr[i] = Math.min(Math.abs(currentIndex-i), Math.abs(previousIndex-i));	
