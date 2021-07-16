@@ -62,41 +62,41 @@ public class DieterPointsProblem
 	@Test
 	public void testData01() // Positive
 	{
-		int[] calories = {1,2,3,4,5}; 
+		int[] calories = { 1, 2, 3, 4, 5 };
 		int k = 1, lower = 3, upper = 3;
-		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 0);
+		Assert.assertTrue(findTotalPoints(calories, k, lower, upper) == 0);
 	}
-	
+
 	@Test
 	public void testData02() // Edge
 	{
-		int[] calories = {3,2}; 
+		int[] calories = { 3, 2 };
 		int k = 2, lower = 2, upper = 3;
-		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 1);
+		Assert.assertTrue(findTotalPoints(calories, k, lower, upper) == 1);
 	}
-	
+
 	@Test
 	public void testData03() // Edge
 	{
-		int[] calories = {-1,1,0,2,-2,0}; 
+		int[] calories = { -1, 1, 0, 2, -2, 0 };
 		int k = 1, lower = -1, upper = 1;
-		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 0);
+		Assert.assertTrue(findTotalPoints(calories, k, lower, upper) == 0);
 	}
-	
+
 	@Test
 	public void testData04() // Edge
 	{
-		int[] calories = {2,3,-4,5,6,-6,9,-9,1}; 
+		int[] calories = { 2, 3, -4, 5, 6, -6, 9, -9, 1 };
 		int k = 3, lower = 1, upper = 5;
-		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 0);
+		Assert.assertTrue(findTotalPoints(calories, k, lower, upper) == 0);
 	}
-	
+
 	@Test
 	public void testData05() // Edge
 	{
-		int[] calories = {6,5,0,0}; 
+		int[] calories = { 6, 5, 0, 0 };
 		int k = 2, lower = 1, upper = 5;
-		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 0);
+		Assert.assertTrue(findTotalPoints(calories, k, lower, upper) == 0);
 	}
 	
 	/*

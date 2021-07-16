@@ -92,12 +92,14 @@ public class HappyCustomers {
 	
   /*
    * Initialize a variable maxCustomers and currentMax.
-	 Iterate the grumpy array, if the element is zero add the corresponding 
-	 value in customers array to maxCustomers
-	 Iterate the grumpy array till k and  if current element is 1, add the value to currentMax 
-	 Compare and store max
+	 Iterate the grumpy array, if the current index element is zero, add same index value of
+	 customer array to maxCustomers
+	 Update the value of maxCustomers to currentMax 
+	 Iterate the grumpy array till k and if current element value is 1, add same index value of
+	 customer array to currentMax
+	 Compare and store max in maxCustomers
 	 Iterate from 1 to length-k -1
-   		Remove the previous index value from currentCustomers if previous  is 1.
+   		Remove the previous index value of customer from currentCustomers if previous  is 1.
    		Add i+k-1, if value is 1 add corresponding index value to currentCustomers
    		compare and store max
  	 Return max
@@ -105,27 +107,27 @@ public class HappyCustomers {
  	 Space - O(1)
    * 
    */
-	
 	private int findHappyCustomers(int[] customers, int[] grumpy, int k) {
 		int maxCustomers = 0, currentCustomers = 0;
 		for (int i = 0; i < grumpy.length; i++) {
-			if(grumpy[i] == 0) maxCustomers += customers[i];
+			if (grumpy[i] == 0)
+				maxCustomers += customers[i];
 		}
 		currentCustomers = maxCustomers;
-		for (int i = 0; i < k; i++) 
-		{
-			if(grumpy[i] == 1) currentCustomers+=customers[i];
-			
+		for (int i = 0; i < k; i++) {
+			if (grumpy[i] == 1)
+				currentCustomers += customers[i];
+
 		}
 		maxCustomers = Math.max(maxCustomers, currentCustomers);
-		for (int i = 1; i < grumpy.length-k+1; i++) 
-		{
-			if(grumpy[i-1] == 1) currentCustomers -= customers[i-1];
-			if(grumpy[i+k-1]==1) currentCustomers  +=customers[i+k-1];
-			maxCustomers = Math.max(maxCustomers, currentCustomers);		
+		for (int i = 1; i < grumpy.length - k + 1; i++) {
+			if (grumpy[i - 1] == 1)
+				currentCustomers -= customers[i - 1];
+			if (grumpy[i + k - 1] == 1)
+				currentCustomers += customers[i + k - 1];
+			maxCustomers = Math.max(maxCustomers, currentCustomers);
 		}
 		return maxCustomers;
-		
 	}
 
 }
