@@ -91,6 +91,14 @@ public class DieterPointsProblem
 		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 0);
 	}
 	
+	@Test
+	public void testData05() // Edge
+	{
+		int[] calories = {6,5,0,0}; 
+		int k = 2, lower = 1, upper = 5;
+		Assert.assertTrue(findTotalPoints(calories,k,lower,upper) == 0);
+	}
+	
 	/*
 	 * 1.Initialize two variables currentCal and totalCal as 0
 	   2.Iterate the input, increment by k
@@ -108,7 +116,8 @@ public class DieterPointsProblem
 		for (int i = 0; i <= calories.length - k; i += k) {
 			int currentCal = 0;
 			int addIndex = i + k - 1;
-			while (addIndex >= i)
+			currentCal = calories[i];
+			while (addIndex > i)
 				currentCal += calories[addIndex--];
 			if (currentCal < lower)
 				totalCal -= 1;
