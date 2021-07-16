@@ -170,19 +170,18 @@ public class FindElementCount
 	
 	private int findElementCountWithHashmap(int[] data)
 	{
-		if(data.length < 2) return 0;
+		if (data.length < 2)
+			return 0;
 		int count = 0;
 		Map<Integer, Integer> inputData = new HashMap<Integer, Integer>();
-		for (int i : data) 
-		{
-			inputData.put(i, inputData.getOrDefault(i, 0)+1);
+		for (int i : data) {
+			inputData.put(i, inputData.getOrDefault(i, 0) + 1);
 		}
-		for (Map.Entry<Integer, Integer> eachItem : inputData.entrySet()) 
-		{
-			if(inputData.containsKey(eachItem.getKey()+1)) count += eachItem.getValue();
+		for (Map.Entry<Integer, Integer> eachItem : inputData.entrySet()) {
+			if (inputData.containsKey(eachItem.getKey() + 1))
+				count += eachItem.getValue();
 		}
-		System.out.println(count);
-		return count;		
+		return count;
 	}
 	
 	
