@@ -1,9 +1,7 @@
 package slidingWindow;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
@@ -54,8 +52,9 @@ public class StringPermutation {
 public void testData01(){            // Positive
 	String s1 = "ab";
 	String s2 = "eidbaooo";
-	Assert.assertTrue(isStringPermutationPresent(s1,s2));
-	Assert.assertTrue(isStringPermutationPresentBruteForce(s1,s2));
+	Assert.assertTrue(isStringPermutationPresentAscii(s1,s2));
+//	Assert.assertTrue(isStringPermutationPresent(s1,s2));
+//	Assert.assertTrue(isStringPermutationPresentBruteForce(s1,s2));
 }
 
 
@@ -63,14 +62,15 @@ public void testData01(){            // Positive
 public void testData02(){			 // Negative
 	String s1 = "ab";
 	String s2 = "eidboaoo";
-	Assert.assertFalse(isStringPermutationPresent(s1,s2));
-	Assert.assertTrue(isStringPermutationPresentBruteForce(s1,s2));
+	Assert.assertFalse(isStringPermutationPresentAscii(s1,s2));
+//	Assert.assertTrue(isStringPermutationPresentBruteForce(s1,s2));
 }
 
 @Test
 public void testData03(){			 // Edge
 	String s1 = "abcd";
 	String s2 = "mnoiabdaacbd";
+	Assert.assertTrue(isStringPermutationPresentAscii(s1,s2));
 	Assert.assertTrue(isStringPermutationPresent(s1,s2));
 	Assert.assertTrue(isStringPermutationPresentBruteForce(s1,s2));
 }
@@ -143,4 +143,41 @@ private boolean isStringPermutationPresentBruteForce(String s1, String s2) {
 	}
 	return false;
 	}
+	
+/* 
+ *  Create two int[] of 128 length
+ *  Iterate s1 string and increment the count in corresponding ascii array
+ *  Compare both array if matches return true
+ *  Iterate the s2 string from index 1 till s2 length - s1 length
+ *    decrement the value of i-1
+ *    increment the value of i+s1 length -1
+ *    Compare both array if matches return true
+ *  return false 
+ * Time : O(m)+ O(n) => O(m+n) => O(m)
+ * Space : O(128) + O(128) => O(256)
+ */
+	private boolean isStringPermutationPresentAscii(String s1, String s2) {
+		if (s1.length() > s2.length())
+			return false;
+		if (s1.length() == 0 || s2.length() == 0)
+			return false;
+		int[] s1AsciiArr = new int[128];
+		int[] s2AsciiArr = new int[128];
+		for (int i = 0; i < s1.length(); i++) {
+			s1AsciiArr[s1.charAt(i)]++;
+			s2AsciiArr[s2.charAt(i)]++;
+		}
+		if (Arrays.equals(s1AsciiArr, s2AsciiArr))
+			return true;
+		for (int i = 1; i <= s2.length() - s1.length(); i++) {
+			s2AsciiArr[s2.charAt(i - 1)]--;
+			s2AsciiArr[s2.charAt(i + s1.length() - 1)]++;
+			if (Arrays.equals(s1AsciiArr, s2AsciiArr))
+				return true;
+		}
+		return false;
+
+	}
 }
+
+
