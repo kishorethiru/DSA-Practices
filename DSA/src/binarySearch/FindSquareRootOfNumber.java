@@ -40,19 +40,19 @@ public class FindSquareRootOfNumber {
 	@Test
 	public void testData02(){			 // Edge
 		int n = 8;
-		Assert.assertTrue(findSquareRoot(n) == 2);
+		Assert.assertTrue(findSquareRootBS(n) == 2);
 	}
 
 	@Test
 	public void testData03(){			 // Edge
 		int n = 1;
-		Assert.assertTrue(findSquareRoot(n) == 1);
+		Assert.assertTrue(findSquareRootBS(n) == 1);
 	}
 	
 	@Test
 	public void testData04(){			 // Edge
 		int n = 624;
-		Assert.assertTrue(findSquareRoot(n) == 24);
+		Assert.assertTrue(findSquareRootBS(n) == 24);
 	}
 
 
