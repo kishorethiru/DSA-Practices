@@ -81,13 +81,12 @@ public class P39_FindIndexOfTarget {
 	/* Initialize low as 0 and high as nums.length - 1 
 	   Iterate the input till low crosses high
 	   	Find the midpoint
-		if midpoint value equals target then return midpoint
-		if low and mid range is sorted 
+		check if midpoint value equals target then return midpoint
+		check if low and mid range is sorted 
 	   		check if target within range high = mid -1
-	   		else low = mid +1
-		else 
-	   		check if target is within range of mid and high low = mid +1
-	   		else high = mid -1
+	   		if not low = mid +1
+	   	if not,check if target is within range of mid and high low = mid +1
+	   		if not high = mid -1
 	   return -1
 	   Time : O(log n)
 	   Space :O(1)

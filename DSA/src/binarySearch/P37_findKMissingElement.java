@@ -61,20 +61,20 @@ public class P37_findKMissingElement {
 	public void testData02(){			 // Negative
 		int[] input = {2,3,4,7,11};
 		int k = 6;
-		Assert.assertTrue(findKMissingElement(input,k)==10);
+		Assert.assertTrue(findKMissingElementBS(input,k)==10);
 	}
 
 	@Test
 	public void testData03(){			 // Edge
 		int[] input = {1,2,3,4};
-		int k = 2;
-		Assert.assertTrue(findKMissingElement(input,k)==6);
+		int k = 3;
+		Assert.assertTrue(findKMissingElementBS(input,k)==7);
 	}
 	@Test
 	public void testData04(){			 // Edge
 		int[] input = {1,2,3,4};
 		int k = 10;
-		Assert.assertTrue(findKMissingElement(input,k) == 14);
+		Assert.assertTrue(findKMissingElementBS(input,k) == 14);
 	}
 
     /* 
@@ -115,10 +115,10 @@ public class P37_findKMissingElement {
 		int low = 0, high = input.length-1;
 		while(low <= high) {
 			int mid = (low+high)/2;
-			if(input[mid] - (mid-1)<k) low = mid+1;
+			if((input[mid] -mid-1) < k) low = mid+1;
 			else high = mid-1;	
 		}
-		return low+k+1;
+		return high+k+1;
 	}
 
 	
