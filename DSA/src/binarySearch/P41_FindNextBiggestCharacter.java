@@ -85,20 +85,16 @@ public class P41_FindNextBiggestCharacter {
 		}
 		return ' ';
 	}
-	/* low and high
-	 * 
+	/* Initialize low as 0 and high as length -1
+	 * Iterate till low crosses high
+	 *  Find mid if mid value is greater than target, return mid
+	 *  If mid value <= target, low = mid+
+	 *  else high = mid-1 
+	 * Time - O(log n)
+	 * Space - O(1)
 	 * 
 	 */
-//	private char findNextBiggestOfTargetBS(char[] input, char target) {
-//		int low = 0, high = input.length-1;
-//		while(low<=high) {
-//			int mid = (low+high)/2;
-//			if(input[mid]>target) return input[mid];
-//			if(input[mid]>target) high = mid-1;
-//			else low = mid+1;			
-//		}
-//		return ' ';
-//	}
+
 	
 	
 	private char findNextBiggestOfTargetBS(char[] input, char target) {
