@@ -53,8 +53,8 @@ public class P41_FindNextBiggestCharacter {
 	@Test
 	public void testData03(){			 // Edge
 		char[] input = {'b','d','h'};
-		char target = 'd';
-		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == 'h');
+		char target = 'h';
+		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == ' ');
 	}
 	
 	@Test
@@ -67,15 +67,15 @@ public class P41_FindNextBiggestCharacter {
 	@Test
 	public void testData05(){			 // Edge
 		char[] input = {'b','d','h','i','k'};
-		char target = 'j';
-		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == 'k');
+		char target = 'b';
+		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == 'd');
 	}
 	
 	@Test
 	public void testData06(){			 // Edge
 		char[] input = {'b','d','h','i','k'};
-		char target = 'h';
-		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == 'i');
+		char target = 'a';
+		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == 'b');
 	}
 
 
@@ -94,18 +94,17 @@ public class P41_FindNextBiggestCharacter {
 	 * Space - O(1)
 	 * 
 	 */
-
-	
 	
 	private char findNextBiggestOfTargetBS(char[] input, char target) {
 		int low = 0, high = input.length-1;
+		if(input.length==0) return ' ';
+		if(target < input[0]) return input[0];
 		while(low<=high) {
 			int mid = (low+high)/2;
-			if(input[mid]>target) return input[mid];
+			if(input[mid]>target && input[mid-1]<=target) return input[mid];
 			if(input[mid]<=target) low = mid+1;
 			else high = mid-1;			
 		}
 		return ' ';
 	}
-
 }
