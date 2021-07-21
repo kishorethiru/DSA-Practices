@@ -3,7 +3,7 @@ package binarySearch;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P39_FindIndexOfTarget {
+public class P39_FindIndexOfTargetInRotationalArray {
 	
 	/*Given the array nums after the rotation and an integer target, 
 	 * return the index of target if it is in nums, or -1 if it is not in nums.
