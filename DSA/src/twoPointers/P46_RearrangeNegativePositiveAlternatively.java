@@ -36,13 +36,6 @@ public class P46_RearrangeNegativePositiveAlternatively {
 	
 	5. Pseudocode
 	
-	 * create a pointer searchPtr = 0
-	 * Iterate the input
-	 *  if current element index is even and element is -ve
-	 *   find the next present positive element and replace with current index element
-	 *  else if current element index is odd and element is +ve  
-	 *  find the next present negative element and replace with current index element
-	 * return input 
 	 */
 	
 	@Test
@@ -67,13 +60,13 @@ public class P46_RearrangeNegativePositiveAlternatively {
 				new int[]{2,-1,2,-1,2,-1}));
 	}
 	
-	/* create a pointer searchPtr = 0
-	   Iterate the input
-	   		if current element index is even and element is -ve
+	/*1. Create a pointer searchPtr = 0
+	  2. Iterate the input
+	   		a)if current element index is even and element is -ve
 	    	  find the next present positive element and replace with current index element
-	   		else if current element index is odd and element is +ve  
+	   		b)else if current element index is odd and element is +ve  
 	   		  find the next present negative element and replace with current index element
-	   return input
+	  3. return input
 	   Time : O(n)
 	   Space : O(1)
 	 */ 
@@ -97,7 +90,6 @@ public class P46_RearrangeNegativePositiveAlternatively {
 				input[i] = temp;
 			}
 		}
-		
 		return input;
 	}
 	
