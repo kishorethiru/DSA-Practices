@@ -6,7 +6,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P46_FindLastAnagram {
+public class P47_FindLastAnagram {
 	/*  Given a string and target, find the last matching anagram
 	 * 
 	 */
