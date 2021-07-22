@@ -78,7 +78,6 @@ public class P44_StringFormat {
 		}
 		StringBuilder sb = new StringBuilder();
 		for (Character c : inputChar) {
-			sb.append(c);
 			sb.append(inputMap.get(c));	
 		}
 		return sb.toString();

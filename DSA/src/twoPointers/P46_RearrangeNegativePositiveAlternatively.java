@@ -9,7 +9,7 @@ public class P46_RearrangeNegativePositiveAlternatively {
 	
 	/*  	
 	 * In the given input array, rearrange the positive and negative items
-	 * alternatively. Input contains negative and positive numbers equally 
+	 * alternatively. Input contains positive and negative numbers equally 
 	 * Input = {12,-90,-100,15,98,99,-56}
 	 * output  = {12,-90,15,-100,98,-56,99}
 	 * 

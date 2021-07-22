@@ -1,5 +1,9 @@
 package twoPointers;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -33,7 +37,6 @@ public class P42_ReverseUniqueCharacters {
 		char[] input = {'a','b','c','d','b'};
 		Assert.assertTrue(reverseUniqueChar(input).equals("dca"));
 	}
-
 
 	@Test
 	public void testData02(){			 // Negative
