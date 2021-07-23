@@ -3,9 +3,9 @@ package bruteforce;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P51_FindSecondMax {
+public class P52_FindSecondMin {
 	
-	/* In the given array find the second max element
+	/* In the given array find the second min element
 	 *  
 	 */
 	
@@ -33,55 +33,55 @@ public class P51_FindSecondMax {
 	@Test
 	public void testData01(){            // Positive
 		int[] input = {2,3,4,1};
-		Assert.assertTrue(findSecondMax(input)==3);
+		Assert.assertTrue(findSecondMin(input)==2);
 	}
 
 
 	@Test(expected = RuntimeException.class)
 	public void testData02(){			 // Negative
 		int[] input = {1,1,1,1};
-		Assert.assertTrue(findSecondMax(input)==1);
+		Assert.assertTrue(findSecondMin(input)==1);
 	}
 
 	@Test
 	public void testData03(){			 // Edge
 		int[] input = {-1,-2,-4,0};
-		Assert.assertTrue(findSecondMax(input)==-1);
+		Assert.assertTrue(findSecondMin(input)==-2);
 	}
 	
 	@Test
 	public void testData04(){			 // Edge
 		int[] input = {8,9,2,3,5,6,7,10,11,14,13};
-		Assert.assertTrue(findSecondMax(input)==13);
+		Assert.assertTrue(findSecondMin(input)==3);
 	}
 	
 	/* If input length is 1 return exception
-	 * Initialize two variables max and secondSum
+	 * Initialize two variables min and secondMin
 	 * Iterate the input from 2,
-	 *  if current element is greater then max, assign max to secondMax and max as currentElement
-	 *  else if current element is > secondSum Update second sum
-	 * Check if both max and secondMax are same, if yes throw exception
-	 * return secondMax 
+	 *  if current element is smaller then max, assign min to secondMin and min as currentElement
+	 *  else if current element is < secondSum Update second min
+	 * Check if both min and secondMin are same, if yes throw exception
+	 * return secondMin 
 	 * 
 	 * Time : O(n)
 	 * Space : O(1)
 	 */
 
-	private int findSecondMax(int[] input) {
+	private int findSecondMin(int[] input) {
 		if (input.length < 2)
 			throw new RuntimeException("Invalid Input");
-		int max = Math.max(input[0], input[1]);
-		int secondMax = Math.min(input[0], input[1]);
+		int min = Math.min(input[0], input[1]);
+		int secondMin = Math.max(input[0], input[1]);
 		for (int i = 2; i < input.length; i++) {
-			if (input[i] > max) {
-				secondMax = max;
-				max = input[i];
-			} else if (secondMax < input[i])
-				secondMax = input[i];
+			if (input[i] < min) {
+				secondMin = min;
+				min = input[i];
+			} else if (secondMin > input[i])
+				secondMin = input[i];
 		}
-		if (max == secondMax)
+		if (min == secondMin)
 			throw new RuntimeException("Invalid Input");
-		return secondMax;
+		return secondMin;
 	}
 	
 }
