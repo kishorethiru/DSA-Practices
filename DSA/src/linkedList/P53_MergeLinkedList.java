@@ -2,7 +2,7 @@ package linkedList;
 
 import org.junit.Test;
 
-public class MergeLinkedList {
+public class P53_MergeLinkedList {
 	
 	/* LinkedList :  1 -> 3 -> 5
 	   LinkedList :  2 -> 4 -> 6 

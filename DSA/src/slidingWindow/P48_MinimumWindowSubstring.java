@@ -1,6 +1,5 @@
 package slidingWindow;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -101,6 +100,7 @@ public class P48_MinimumWindowSubstring {
 	 *    c) increment right
 	 * 5.return returnStr
 	 * Time : O(n)
+	 * Space : O(n)
 	 */
 
 	private String findMinimumSubtring(String s, String t) {

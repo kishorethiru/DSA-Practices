@@ -77,8 +77,7 @@ public class P41_FindNextBiggestCharacter {
 		char target = 'a';
 		Assert.assertTrue(findNextBiggestOfTargetBS(input,target) == 'b');
 	}
-
-
+	
 	private char findNextBiggestOfTarget(char[] input, char target) {
 		for (int i = 0; i < input.length; i++) {
 			if(input[i]>target) return input[i];			

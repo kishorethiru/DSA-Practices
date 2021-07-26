@@ -126,7 +126,8 @@ public class P40_FindNoOfOnes {
 			else high = mid-1;
 		}
 		return nums.length-low;
-	}
+		
+	}	
 	
 	
 	

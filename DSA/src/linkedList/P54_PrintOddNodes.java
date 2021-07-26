@@ -2,7 +2,7 @@ package linkedList;
 
 import org.junit.Test;
 
-public class PrintOddNodes {
+public class P54_PrintOddNodes {
 
 	public class Node {
 		int value;
@@ -44,7 +44,7 @@ public class PrintOddNodes {
 	}
 	
 	@Test
-    public void testEven() {
+    public void testEven() {		
         Node head1 = addNode(1);
         head1.next = addNode(2);
         head1.next.next = addNode(3);
