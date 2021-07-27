@@ -78,6 +78,16 @@ public class P16_MergeSortedArray
 		Assert.assertArrayEquals(mergeSortedArray(nums1,m,nums2,n), new int[] {1,2,2,2,2,2,3});
 	}
 	
+	@Test
+	public void testData04() // Edge
+	{
+		int[] nums1 = {1,2,0,0};
+		int[] nums2 = {3,4};
+		int m = 2;
+		int n = 2;
+		Assert.assertArrayEquals(mergeSortedArray(nums1,m,nums2,n), new int[] {1,2,3,4});
+	}
+	
 	/* Pseudocode - Two pointers
 	 * if m = 0, return nums2;
 		if n = 0, return nums1;
