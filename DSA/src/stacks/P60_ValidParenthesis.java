@@ -60,7 +60,8 @@ public class P60_ValidParenthesis {
 	 * Create a Hashmap holding the parenthesis pairs
 	 * Create a stack
 	 * Iterate the input
-	 *   If current element and peek element is matching the value in hashmap , pop
+	 *   If stack is not empty and current element is present in key 
+	 *    	pop the item from stack and check if equals to value of current key in map, if not return false 
 	 *   else push to stack
 	 * If stack is empty return true else false
 	 * 
@@ -78,7 +79,9 @@ public class P60_ValidParenthesis {
 		pairs.put(')', '(');
 		Stack<Character> stack = new Stack<>();
 		for (int i = 0; i < input.length(); i++) {
-			if(!stack.isEmpty() && pairs.get(input.charAt(i)) == stack.peek()) stack.pop();
+			if(!stack.isEmpty() && pairs.containsKey(input.charAt(i))) {
+				if (!stack.pop().equals(pairs.get(input.charAt(i)))) return false;
+			}
 			else stack.push(input.charAt(i));
 		}
 		return stack.size() == 0;
