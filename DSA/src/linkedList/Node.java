@@ -1,14 +1,14 @@
 package linkedList;
 
 public class Node {
-	int value;
-	Node next;
+	public int value;
+	public Node next;
 	
 	Node() {
 		next = null;
 	}
 	
-	Node(int key) {
+	public Node(int key) {
 		this.value = key;
 		next = null;
 	}
