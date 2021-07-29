@@ -41,7 +41,7 @@ public class P46_RearrangeNegativePositiveAlternatively {
 	@Test
 	public void testData01(){            // Positive
 		int[] input = {12,-90,-100,15,98,99,-56};
-		Assert.assertTrue(Arrays.equals(rearrangeNegativePositiveAlternatively(input),
+		Assert.assertTrue(Arrays.equals(rearrangeNegativePositiveAlternativelyTwoPass(input),
 				new int[]{12, -90, 15, -100, 98, -56, 99}));
 	}
 
@@ -49,14 +49,14 @@ public class P46_RearrangeNegativePositiveAlternatively {
 	@Test
 	public void testData02(){			 // Edge
 		int[] input = {-1,-2,-3,1,2,2};
-		Assert.assertTrue(Arrays.equals(rearrangeNegativePositiveAlternatively(input),
+		Assert.assertTrue(Arrays.equals(rearrangeNegativePositiveAlternativelyTwoPass(input),
 				new int[]{1,-2,2,-1,2,-3}));
 	}
 
 	@Test
 	public void testData03(){			 // Edge
 		int[] input = {-1,2,-1,2,-1,2};
-		Assert.assertTrue(Arrays.equals(rearrangeNegativePositiveAlternatively(input),
+		Assert.assertTrue(Arrays.equals(rearrangeNegativePositiveAlternativelyTwoPass(input),
 				new int[]{2,-1,2,-1,2,-1}));
 	}
 	
@@ -91,6 +91,41 @@ public class P46_RearrangeNegativePositiveAlternatively {
 			}
 		}
 		return input;
+	}
+	
+	/*1. Create a left and right 
+	  2. Iterate the input
+	   		a) If the left is negative  and right element is postive, swap right and left
+	   			increment left and decrement right
+	   		b) If the right element is negative, decrement right
+	   		c) Else increment left
+	  3. Move the right index  to start point of negative value
+	  4. Iterate the input by moving index by +2, 
+	     	a) Swap the current element and right index, decrement right
+	  5 . Return input
+	   Time : O(n) + O(n/2) -> O(n)
+	   Space : O(1)
+	 */ 
+	
+	private int[] rearrangeNegativePositiveAlternativelyTwoPass(int[] input) {
+		if(input.length==0)return new int[]{};
+		int left = 0, right = input.length-1;
+		while(left<right) {
+			if(input[left] < 0 && input[right]>0) {
+				int temp = input[left];
+				input[left++] = input[right];
+				input[right--] = temp;
+			}
+			else if(input[right]<0) right--;
+			else left++;
+		}
+		right = (input.length % 2 != 0) ? (input.length/2) + 1 : input.length/2;
+		for (left = 1; left < input.length; left += 2) {
+			int temp = input[left];
+			input[left] = input[right];
+			input[right++] = temp;
+		}
+		return input;		
 	}
 	
 	
