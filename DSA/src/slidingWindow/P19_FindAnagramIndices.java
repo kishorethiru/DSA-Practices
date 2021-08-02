@@ -56,6 +56,7 @@ public class P19_FindAnagramIndices {
 		String input = "cbaebabacd";
 		String match = "abc";	
 		Assert.assertArrayEquals(findAllAnagram(input,match), new int[] {0,6});
+		Assert.assertArrayEquals(findAllAnagramUsingAscii(input,match), new int[] {0,6});
 	}
 	
 	@Test
@@ -64,6 +65,7 @@ public class P19_FindAnagramIndices {
 		String input = "cbeababada";
 		String match = "abc";	
 		Assert.assertArrayEquals(findAllAnagram(input,match), new int[] {});
+		Assert.assertArrayEquals(findAllAnagramUsingAscii(input,match), new int[] {});
 	}
 	
 	@Test
@@ -72,6 +74,7 @@ public class P19_FindAnagramIndices {
 		String input = "abcabcabca";
 		String match = "abc";	
 		Assert.assertArrayEquals(findAllAnagram(input,match), new int[] {0,1,2,3,4,5,6,7});
+		Assert.assertArrayEquals(findAllAnagramUsingAscii(input,match), new int[] {0,1,2,3,4,5,6,7});
 	}
 	
 	@Test
@@ -80,6 +83,7 @@ public class P19_FindAnagramIndices {
 		String input = "teyuette";
 		String match = "te";	
 		Assert.assertArrayEquals(findAllAnagram(input,match), new int[] {0,4,6});
+		Assert.assertArrayEquals(findAllAnagramUsingAscii(input,match), new int[] {0,4,6});
 	}
 	
 //	Pseudocode 
@@ -117,6 +121,24 @@ public class P19_FindAnagramIndices {
 			if(patternMap.equals(currentVal)) retArr[index++] = i;
 		}
 		return Arrays.copyOf(retArr, index);
+	}
+	
+	private int[] findAllAnagramUsingAscii(String input, String match) {
+		int[] matchAscii = new int[128];
+		int[] inputAscii = new int[128];
+		int[] output = new int[input.length()]; 
+		for (int i = 0; i < match.length(); i++) {
+			matchAscii[match.charAt(i)]++;
+			inputAscii[input.charAt(i)]++;
+		}
+		int index = 0;
+		if(Arrays.equals(inputAscii, matchAscii)) index++;
+		for (int i = 1; i <= input.length()-match.length(); i++) {
+			inputAscii[input.charAt(i-1)]--;
+			inputAscii[input.charAt(i+match.length()-1)]++;
+			if(Arrays.equals(inputAscii, matchAscii)) output[index++] = i;
+		}
+		return Arrays.copyOf(output, index);		
 	}
 	
 	

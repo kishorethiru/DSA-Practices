@@ -97,7 +97,7 @@ public class P27_MoveOddNumbersToRight
 	 *      c) else left ++
 	 * 4. return input[]
 	 * 
-	 * Time : Worst/Medium case - O(n), Best Case - O(n) 
+	 * Time : Worst/Medium case - O(n), Best Case - O(n/2) 
 	 * Space : O(1)
 	 */
 	

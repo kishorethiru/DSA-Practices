@@ -73,7 +73,7 @@ public class P62_CharacterReprogramming {
 			else count -= 1;
 		}
 		count = Math.abs(count);
-		return count == input.length() ? 0 : input.length()-count;
+		return input.length()-count;
 	}
 
 }

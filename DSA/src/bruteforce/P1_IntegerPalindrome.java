@@ -88,6 +88,7 @@ public class P1_IntegerPalindrome {
 	}
 	
 	
+	
 	/* create a variable reverseInput and initialize as 0
 	 * Create variable data and assign the value of input
 	 * Create a variable isInputNegative and make it as true if the input is negative
@@ -114,7 +115,7 @@ public class P1_IntegerPalindrome {
 		while(inputData!=0)
 		{
 			int remainder = inputData % 10;
-			reverseInput = reverseInput * 10 + remainder;
+			reverseInput = (reverseInput * 10) + remainder;
 			inputData = inputData / 10;
 			
 		}
