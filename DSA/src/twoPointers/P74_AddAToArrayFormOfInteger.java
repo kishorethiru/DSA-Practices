@@ -46,11 +46,8 @@ public class P74_AddAToArrayFormOfInteger {
 
 		int[] input = {1,2,0,0};
 		int k = 34;
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
+		Integer[] output = {1,2,3,4};
+		List<Integer> list =Arrays.asList(output) ;
 		Assert.assertTrue(addArrayFormOfInteger(input,k).equals(list));
 	}
 
@@ -58,11 +55,8 @@ public class P74_AddAToArrayFormOfInteger {
 	public void testData02() { // Negative
 		int[] input = {2,1,5};
 		int k = 806;
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(0);
-		list.add(2);
-		list.add(1);
+		Integer[] output = {1,0,2,1};
+		List<Integer> list =Arrays.asList(output);
 		Assert.assertTrue(addArrayFormOfInteger(input,k).equals(list));
 
 	}
@@ -71,18 +65,8 @@ public class P74_AddAToArrayFormOfInteger {
 	public void testData03() { // Edge
 		int[] input = {9,9,9,9,9,9,9,9,9,9};
 		int k = 1;
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
-		list.add(0);
+		Integer[] output = {1,0,0,0,0,0,0,0,0,0,0};
+		List<Integer> list =Arrays.asList(output);
 		Assert.assertTrue(addArrayFormOfInteger(input,k).equals(list));
 	}
 	
@@ -90,11 +74,8 @@ public class P74_AddAToArrayFormOfInteger {
 	public void testData04() { // Edge
 		int[] input = {0};
 		int k = 1000;
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(0);
-		list.add(0);
-		list.add(0);
+		Integer[] output = {1,0,0,0};
+		List<Integer> list =Arrays.asList(output) ;
 		Assert.assertTrue(addArrayFormOfInteger(input,k).equals(list));
 	}
 	
@@ -103,11 +84,8 @@ public class P74_AddAToArrayFormOfInteger {
 
 		int[] input = {7};
 		int k = 993;
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(0);
-		list.add(0);
-		list.add(0);
+		Integer[] output = {1,0,0,0};
+		List<Integer> list = Arrays.asList(output);
 		Assert.assertTrue(addArrayFormOfInteger(input,k).equals(list));
 	}
 
