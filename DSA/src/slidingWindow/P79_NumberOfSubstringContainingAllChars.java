@@ -175,10 +175,5 @@ public class P79_NumberOfSubstringContainingAllChars {
             count += min + 1;
         }
         return count;
-    }
-
-	
-	
-	
-	
+    }	
 }
