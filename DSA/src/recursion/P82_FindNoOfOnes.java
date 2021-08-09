@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FindNoOfOnes {
+public class P82_FindNoOfOnes {
 	/*
 		Problem Statement
 		Given the int[] containing 0's and 1's in the unsorted manner.

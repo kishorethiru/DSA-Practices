@@ -106,8 +106,7 @@ public class P64_FindStaringEndingIndexOfTarget {
 		int first = findfirstIndex(input,target);
 		int last  = findLastIndex(input,target);
 		if (!(input[first] == target && input[last] == target))return new int[] {-1,-1};
-		return new int[] {first, last};
-		
+		return new int[] {first, last};	
 	}
 	
 	 private int findfirstIndex(int[] input,int target) {
@@ -127,8 +126,7 @@ public class P64_FindStaringEndingIndexOfTarget {
 			 if(input[mid] > target) high = mid-1;
 			 else low = mid+1;
 		 }
-		 return high;
-		 
+		 return high;	 
 	 }
 
 }

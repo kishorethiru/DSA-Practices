@@ -68,7 +68,7 @@ public class P34_FindSquareRootOfNumber {
 	 * Space : O(1)
 	 */
 	private int findSquareRoot(int n) {
-		if(n<0) throw new RuntimeException("Invalid number");
+		if(n < 0) throw new RuntimeException("Invalid number");
 		if(n < 3) return 1;
 		for (int i = 1; i <= n/2; i++) {
 			int squaredNumber = i*i;
@@ -114,7 +114,7 @@ public class P34_FindSquareRootOfNumber {
 		int low = 1, high = n/2;
 		while(low <= high) {
 			int midpoint = (low+high)/2;
-			int squaredNumber = midpoint * midpoint; // 12 == 9
+			int squaredNumber = midpoint * midpoint;
 			if(squaredNumber>n) high = midpoint-1;
 			else if(squaredNumber<n) low = midpoint+1;
 			else return midpoint;

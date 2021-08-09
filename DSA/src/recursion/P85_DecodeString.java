@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class DecodeString {
+public class P85_DecodeString {
 	/*
 		Problem Statement
 		
@@ -83,19 +83,11 @@ public class DecodeString {
 		if(!s.contains("]")) return s;
 		int closeIndex = s.indexOf(']');
 		int openIndex = s.substring(0, closeIndex).lastIndexOf('[');
-		int getPrevCharIndex = (openIndex-1);
-		while(getPrevCharIndex >= 0){
-			if(!Character.isDigit(s.charAt(getPrevCharIndex))) break;
-			getPrevCharIndex--;
-		}
-		String subStr = "";
-		int k = 1;
-		if(!Character.isDigit(s.charAt(getPrevCharIndex)))
-			subStr += s.charAt(getPrevCharIndex);
-		else	
-			k = Integer.parseInt(s.substring(getPrevCharIndex+ openIndex));
+		char prevChar = !Character.isDigit(s.charAt(openIndex-1)) ? s.charAt(openIndex-1) : ' ';
+		int k = (prevChar == ' ') ? Character.getNumericValue(s.charAt(openIndex-1)) : 1;
+		String subStr = (prevChar == ' ' ) ? s.substring(openIndex+1, closeIndex) :
+			prevChar + s.substring(openIndex+1, closeIndex) ;
 		String strToAppend = "";
-		subStr = strToAppend + s.substring(openIndex+1, closeIndex);
 		while(k!=0) {
 			strToAppend += subStr;
 			k--;
@@ -104,19 +96,7 @@ public class DecodeString {
 		return decodeString(s);
 	}
 	
-	/*
-	 *  if(!s.contains("]")) return s;
-		int closeIndex = s.indexOf(']');
-		int openIndex = s.substring(0, closeIndex).lastIndexOf('[');
-		char prevChar = !Character.isDigit(s.charAt(openIndex-1)) ? s.charAt(openIndex-1) : ' ';
-		int k = (prevChar == ' ') ? Character.getNumericValue(s.charAt(openIndex-1)) : 1;
-		String subStr = (prevChar == ' ' ) ? s.substring(openIndex+1, closeIndex) : prevChar + s.substring(openIndex+1, closeIndex) ;
-		String strToAppend = "";
-		while(k!=0) {
-			strToAppend += subStr;
-			k--;
-		}
-		s = s.substring(0, openIndex-1)+ strToAppend + s.substring(closeIndex+1, s.length()); 
-		return decodeString(s);
-	 */
+	
+	   
+	 
 }

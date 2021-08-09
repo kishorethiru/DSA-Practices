@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class ReverseString {
+public class P84_ReverseString {
 	/*
 		Problem Statement
 		Reverse the string by recursion

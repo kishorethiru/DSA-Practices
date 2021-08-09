@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class FindSubstringCount {
+public class P83_FindSubstringCount {
 	/*
 		Problem Statement
 		 Given two string s and t, find how many t is present in String s

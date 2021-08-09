@@ -6,7 +6,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class FibonacciSeries {
+public class P81_FibonacciSeries {
 	/*
 		Problem Statement
 		
