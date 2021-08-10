@@ -7,7 +7,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FindMaxClosestSum {
+public class P89_FindMaxClosestSum {
 	
 	/* 
 	 * Given an integer array, find the index of sum of two numbers
