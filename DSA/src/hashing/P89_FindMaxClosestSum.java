@@ -100,7 +100,7 @@ public class P89_FindMaxClosestSum {
 		}
 		for (int i = 0; i < input.length; i++) {
 			int diff = k-input[i];
-			if(diff-- > 0) {
+			if(diff-- < k) {
 				while(diff>minValue){
 					if(inputMap.containsKey(diff)&& i != inputMap.get(diff)) break;
 					diff--;
