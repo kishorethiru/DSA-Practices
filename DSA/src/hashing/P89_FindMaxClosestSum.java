@@ -49,7 +49,7 @@ public class P89_FindMaxClosestSum {
 	public void testData02(){			 // Negative
 		int[] input = {12,15,30};
 		int k= 25;
-		Assert.assertTrue(Arrays.equals(findMaxClosestSum(input,k), new int[] {-1,-1}));
+		Assert.assertTrue(Arrays.equals(findMaxClosestSumHashMap(input,k), new int[] {-1,-1}));
 		
 	}
 
@@ -57,7 +57,7 @@ public class P89_FindMaxClosestSum {
 	public void testData03(){			 // Edge
 		int[] input = {-2,-4,-5,0,3};
 		int k= 0;
-		Assert.assertTrue(Arrays.equals(findMaxClosestSum(input,k), new int[] {1,4}));
+		Assert.assertTrue(Arrays.equals(findMaxClosestSumHashMap(input,k), new int[] {1,4}));
 	}
 	
 	/* Initialize a variable count as Math.MIN_VALUE, index1 and index 2.
@@ -100,9 +100,9 @@ public class P89_FindMaxClosestSum {
 		}
 		for (int i = 0; i < input.length; i++) {
 			int diff = k-input[i];
-			if(diff-->0) {
-				while(diff == input[i] || !inputMap.containsKey(diff)){
-					if(diff<minValue) break;
+			if(diff-- > 0) {
+				while(diff>minValue){
+					if(inputMap.containsKey(diff)&& i != inputMap.get(diff)) break;
 					diff--;
 				}
 				if(minCount< input[i]+diff) {

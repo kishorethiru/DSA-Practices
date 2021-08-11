@@ -142,9 +142,8 @@ public class P9_RemoveTargetInArray {
 			 if (data[i] != target) {
 				 data[pointer++] = data[i];
 			 }
-			 System.out.println(Arrays.toString(data));
 		 }
-		 System.out.println(pointer);
+		 System.out.println(Arrays.toString(data));
 		 return Arrays.copyOf(data, pointer);
 
 	 }

@@ -103,6 +103,16 @@ public class P8_FindElementCount
 		Assert.assertTrue(findElementCountWithHashmap(data)==op);
 	}
 	
+	@Test
+	public void testData04()
+	{
+		int[] data = {1,1,1,2,2,3,4,5};
+		int op     = 7;
+		Assert.assertTrue(findElementCount(data)==op);
+		Assert.assertTrue(findElementCountWithList(data)==op);
+		Assert.assertTrue(findElementCountWithHashmap(data)==op);
+	}
+	
 	/* Pseudocode - Bruteforce using two for loops
 	 * If input array length is > 2 return 0
 	 * Create a variable count
