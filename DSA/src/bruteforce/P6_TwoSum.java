@@ -117,7 +117,7 @@ public class P6_TwoSum
 		{
 			int diff = target - data[i];
 			if(inputData.containsKey(diff)) return new int[] {inputData.get(diff),i};
-			else inputData.put(data[i],inputData.getOrDefault(data[i],0)+1);
+			else inputData.put(data[i],i);
 		}
 		return new int[] {};		
 	}
