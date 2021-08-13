@@ -2,13 +2,13 @@
  This repo contains the **Data Structures** and **Algorithms** problems solved by me.
 ## What is Data Structures ?
 
-> Data structure is a process through which data is stored and arranged in the disk space of the computer or memory storage, in a way that the data can be easily used and manipulated in the future.
-> We are using data structures in our daily life, starting from our phone contact list, Waiting in the **Queue** in the bill counter and arranging the pile of plates in a **Stack**.
-> Data Structures stores object and allow their manupulation.
+- Data structure is a process through which data is stored and arranged in the disk space of the computer or memory storage, in a way that the data can be easily used and manipulated in the future.
+- We are using data structures in our daily life, starting from our phone contact list, Waiting in the **Queue** in the bill counter and arranging the pile of plates in a **Stack**.
+- Data Structures stores object and allow their manupulation.
 
 ## What is an Algorithm?
 
-> Algorithm refers to a set of rules/instructions that step-by-step define how a work is to be executed upon in order to get the expected results. 
+- Algorithm refers to a set of rules/instructions that step-by-step define how a work is to be executed upon in order to get the expected results. 
 
 ## Why did i started now?
 
