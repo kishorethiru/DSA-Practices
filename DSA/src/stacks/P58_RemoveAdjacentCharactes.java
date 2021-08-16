@@ -86,19 +86,9 @@ public class P58_RemoveAdjacentCharactes {
 		for (Character stackChar : stack) {
 			sb.append(stackChar);
 		}
-//		for (int i = 0; i < stackSize; i++) {
-//			sb.append(stack.pop());
-//		}
 		return sb.toString();
 	}
 	
-	/*  Create a StringBuilder
-	 *  Initialize P1 = 0 , P2 = 1;
-	 *  Iterate till right < length
-	 *    If P1 != P2, add P1,P2 to sb increment P1 ++, P2++
-	 *    If 
-	 * 
-	 * 
-	 */
+
 
 }

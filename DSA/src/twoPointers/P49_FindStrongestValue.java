@@ -79,7 +79,7 @@ public class P49_FindStrongestValue {
 		while(left<=right) {
 			if(Math.abs(input[right]-median) > Math.abs(input[left]-median)) retArr[index++] = input[right--];
 			else if (Math.abs(input[right]-median) < Math.abs(input[left]-median)) retArr[index++] = input[left++];
-			else retArr[index++] = input[left]>input[right] ? input[left++] : input[right--];		
+			else retArr[index++] = input[left]>input[right] ? input[left++] : input[right--];
 		}
 		return Arrays.copyOf(retArr, k);
 	}

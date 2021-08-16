@@ -104,5 +104,5 @@ public class P45_FindShortestUniqueSubstring {
 			right++;
 		}
 		return returnString;
-	}	
+	}
 }

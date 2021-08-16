@@ -1,5 +1,6 @@
 package slidingWindow;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -138,7 +139,7 @@ public class P19_FindAnagramIndices {
 			inputAscii[input.charAt(i+match.length()-1)]++;
 			if(Arrays.equals(inputAscii, matchAscii)) output[index++] = i;
 		}
-		return Arrays.copyOf(output, index);		
+		return Arrays.copyOf(output, index);	
 	}
 	
 	

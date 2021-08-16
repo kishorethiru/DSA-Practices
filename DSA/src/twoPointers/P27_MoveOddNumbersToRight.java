@@ -82,7 +82,10 @@ public class P27_MoveOddNumbersToRight
 			else oddList.add(input[i]);
 		}
 		evenList.addAll(oddList);
-//		return evenList;
+		int index = 0; 
+		for (Integer val : evenList) {
+			input[index++] = val; 
+		}
 		return input;
 	}
 	
