@@ -60,6 +60,7 @@ public class P66_DailyTemperature {
 	@Test
 	public void testData01(){            // Positive
 		int[] input = {73,74,75,71,69,72,76,73};
+		dailyTemperatures(input);
 		int[] output = {1,1,4,2,1,1,0,0};
 		Assert.assertTrue(Arrays.equals(getNextTemperatureDayBruteForce(input), output));
 		Assert.assertTrue(Arrays.equals(getNextTemperatureDayTwoPtr(input), output));
@@ -181,6 +182,19 @@ public class P66_DailyTemperature {
 				op[i] = count;
 		}
 		return op;
+	}
+	
+	public int[] dailyTemperatures(int[] temperatures) {
+	    Stack<Integer> stack = new Stack<>();
+	    int[] ret = new int[temperatures.length];
+	    for(int i = 0; i < temperatures.length; i++) {
+	        while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+	            int idx = stack.pop();
+	            ret[idx] = i - idx;
+	        }
+	        stack.push(i);
+	    }
+	    return ret;
 	}
 	
 
