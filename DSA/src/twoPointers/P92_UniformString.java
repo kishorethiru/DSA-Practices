@@ -102,6 +102,7 @@ public class P92_UniformString {
 			}
 			left = right;
 		}
+		
 		boolean[] op = new boolean[target.length];
 		for (int i = 0; i < target.length; i++) {
 			op[i] = targetMap.get(target[i]);
@@ -109,10 +110,4 @@ public class P92_UniformString {
 		return op;
 	}
 	
-	/* Timings 
-	 * Pseudocode - 15 mins
-	 * Code/debug - 25 mins without optimization for the given single output
-	 * 
-	 * 
-	 */
 }

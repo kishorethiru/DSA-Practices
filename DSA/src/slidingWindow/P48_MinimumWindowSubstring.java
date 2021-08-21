@@ -1,7 +1,9 @@
 package slidingWindow;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -65,14 +67,7 @@ public class P48_MinimumWindowSubstring {
 		String t = "ABC";
 		Assert.assertTrue(findMinimumSubtring(s,t).equals("BANC"));
 	}
-	@Test
-	public void testData04(){            // Positive
-		String s = "ACOOBDEBANC";
-		String t = "ABC";
-		Assert.assertTrue(findMinimumSubtring(s,t).equals("BANC"));
-	}
-
-
+	
 	@Test
 	public void testData02(){			 // Negative
 		String s = "a";
@@ -85,6 +80,13 @@ public class P48_MinimumWindowSubstring {
 		String s = "a";
 		String t = "a";
 		Assert.assertTrue(findMinimumSubtring(s,t).equals("a"));
+	}
+	
+	@Test
+	public void testData04(){            // Positive
+		String s = "ACOOBDEBANC";
+		String t = "ABC";
+		Assert.assertTrue(findMinimumSubtring(s,t).equals("BANC"));
 	}
 	
 	/* 1.Initialize left as 0, right as 1 and minCount = Integer.MAX_VALUE
@@ -135,7 +137,7 @@ public class P48_MinimumWindowSubstring {
 		}
 		return returnStr;
 	}
-
+	
 	private boolean isAllCharPresent(Map<Character, Integer> inputMap, String target) {
 		int left = 0, right = target.length() - 1;
 		while (left <= right) {
@@ -150,6 +152,65 @@ public class P48_MinimumWindowSubstring {
 			}
 		}
 		return true;
-
 	}
-}
+	}
+	
+	/* 	1. Create a HashMap targetMap and add values of String to it
+		2. Create another map as inputMap
+		3. Create variable min as 0 and returnString as empty string.
+		4. Add the values of input S of size targetMap only if it contains in targeMap.
+		   check if it is present in targetMap
+		   and store the min
+		   if yes get the subStr
+		5. Initialize left as 0 and right as 1.
+		6. Iterate till right <=s.length()-t.length()
+		   Add the next element of tMap size to inputMap
+		   if tMap and inputMap are same
+			if currentRange is less than min value 
+			 replace returnString
+			 Update count
+			remove the left char from inputMap
+			increment left++
+		   increment right
+		7.return returnString
+	 * 
+	 */
+//	private String minimumWindowSubstringOptimized(String s, String t) {
+//		if (s.length() < t.length())
+//			return "";
+//		Map<Character,Integer> tMap = new HashMap<>();
+//		for (Character eachVal : t.toCharArray()) tMap.put(eachVal,tMap.getOrDefault(eachVal, 0)+1);
+//		Map<Character,Integer> inputMap = new HashMap<>();
+//		int min = Integer.MAX_VALUE;
+//		String returnString = "";
+//		for (int i = 0; i < t.length(); i++) {
+//			if(tMap.containsKey(s.charAt(i))) inputMap.put(s.charAt(i), 
+//					inputMap.getOrDefault(s.charAt(i), 0)+1);
+//		}
+//		if(inputMap.equals(tMap)) {
+//			min = t.length();
+//			returnString = s.substring(0,t.length());
+//		}
+//		int left = 0, right = t.length();
+//		while(right < s.length()){
+//			char addChar = s.charAt(right);
+//			if(tMap.containsKey(addChar))  
+//				inputMap.put(addChar,inputMap.getOrDefault(addChar, 0)+1);
+//			while(tMap.equals(inputMap)) {
+//				if(right-left+1 < min) {
+//					min = right-left+1;
+//					returnString = s.substring(left,right+1); 
+//				}
+//				char removeChar = s.charAt(left++);
+//				if(tMap.containsKey(removeChar)) {
+//					if(inputMap.get(removeChar) > 1) {
+//						inputMap.put(removeChar, inputMap.getOrDefault(removeChar, 0)-1);
+//					}
+//					else inputMap.remove(removeChar);	
+//				}
+//			}
+//			right++;
+//		}
+//		return returnString;
+//	}
+
