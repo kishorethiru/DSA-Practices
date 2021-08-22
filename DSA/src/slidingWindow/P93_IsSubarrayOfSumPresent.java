@@ -8,12 +8,6 @@ public class P93_IsSubarrayOfSumPresent {
 		
 		Given an int array [1,4,20,3,10,5] and target sum 33.
 		If target subarray sum is found, return true else false
-		Time : 20 Minutes 
-		- Write another 2 test data (edge and neg)
-		- Pseudo Code for Optimised Solution
-		- Code, Debug
-		- Time everything 
-		- Do it yourself !! 
 	
 	*/
 
@@ -66,8 +60,6 @@ public class P93_IsSubarrayOfSumPresent {
 		int target = 2;
 		Assert.assertTrue(isSumPresentInSubarray(input,target));
 	}
-	
-	// Template filling and TC - 4 mins
 
 	/* Pseudocode - Sliding Window
 	 * 1.Create Two pointer left,right as 0
@@ -78,7 +70,6 @@ public class P93_IsSubarrayOfSumPresent {
 	 *   c) If sum matches target return true;
 	 * 4.return false
 	 * 
-	 * Time  - 3 mins
 	 */
 	
 	/*  Time Complexity - O(n)
@@ -99,6 +90,4 @@ public class P93_IsSubarrayOfSumPresent {
 		}
 		return false;
 	}
-	
-	// Code and Debug - 10 Mins
 }
