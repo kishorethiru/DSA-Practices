@@ -52,8 +52,9 @@ public class P85_DecodeString {
 
 	@Test
 	public void testData02() { // Negative
-		String s = "a[a]d[bc]";
-		Assert.assertTrue(decodeString(s).equals("aadbc"));
+		String s = "a[a]dd[bc]";
+		System.out.println(decodeString(s));
+		Assert.assertTrue(decodeString(s).equals("aaddbc"));
 	}
 
 	@Test
@@ -80,19 +81,30 @@ public class P85_DecodeString {
         StringBuilder append (String after the closing bracket) 
 	 */
 	private String decodeString(String s) {
-		if(!s.contains("]")) return s;
+		if (!s.contains("]"))
+			return s;
 		int closeIndex = s.indexOf(']');
 		int openIndex = s.substring(0, closeIndex).lastIndexOf('[');
-		char prevChar = !Character.isDigit(s.charAt(openIndex-1)) ? s.charAt(openIndex-1) : ' ';
-		int k = (prevChar == ' ') ? Character.getNumericValue(s.charAt(openIndex-1)) : 1;
-		String subStr = (prevChar == ' ' ) ? s.substring(openIndex+1, closeIndex) :
-			prevChar + s.substring(openIndex+1, closeIndex) ;
+		int k = 1;
+		StringBuilder digits = new StringBuilder();
+		int getIndex = openIndex - 1;
+		if (getIndex >= 0 && Character.isLetter(s.charAt(getIndex))) {
+			digits.insert(0, s.charAt(getIndex--));
+		} else {
+			while (getIndex >= 0 && Character.isDigit(s.charAt(getIndex))) {
+				digits.insert(0, s.charAt(getIndex--));
+			}
+			k = Integer.parseInt(digits.toString());
+		}
+		String subStr = (k != 1) ? s.substring(openIndex + 1, closeIndex)
+				: digits.toString() + s.substring(openIndex + 1, closeIndex);
 		String strToAppend = "";
-		while(k!=0) {
+		while (k != 0) {
 			strToAppend += subStr;
 			k--;
 		}
-		s = s.substring(0, openIndex-1)+ strToAppend + s.substring(closeIndex+1, s.length()); 
+		int diff = digits.length() == 0 ? 1 : digits.length();
+		s = s.substring(0, openIndex - diff) + strToAppend + s.substring(closeIndex + 1, s.length());
 		return decodeString(s);
 	}
 	
