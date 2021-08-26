@@ -59,12 +59,12 @@ public class P97_CeasarCipher {
 	}
 
 	private String caesarCipher(String s, int k) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder(); // StringBuilder
 		k %= 26;
 		for (int i = 0; i < s.length(); i++) {
-			char current = s.charAt(i);
-			if (Character.isLetter(current)) {
-				int val = (int) current;
+			char current = s.charAt(i); // Get the current char
+			if (Character.isLetter(current)) { //Check if its letter
+				int val = (int) current; // Getting ASCII value
 				if (Character.isLowerCase(current) && val + k > 122) {
 					val = (val + k) - 26;
 				} else if (Character.isUpperCase(current) && val + k > 90) {

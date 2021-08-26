@@ -1,6 +1,8 @@
 package events;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -49,19 +51,20 @@ public class P108_AttendAllMeetings {
 	@Test
 	public void testData01() { // Positive
 		int[][] intervals = {{7,10},{2,4}};
-		Assert.assertTrue(isAllMeetingsCanBeAttended(intervals));
+		mergeIntervals(intervals);
+//		Assert.assertTrue(mergeIntervals(intervals));
 	}
 
 	@Test
 	public void testData02() { // Negative
 		int[][] intervals = {{0,30},{5,10},{15,20}};
-		Assert.assertFalse(isAllMeetingsCanBeAttended(intervals));
+//		Assert.assertFalse(mergeIntervals(intervals));
 	}
 
 	@Test
 	public void testData03() { // Edge
 		int[][] intervals = {{3,5},{1,2},{4,7}};
-		Assert.assertFalse(isAllMeetingsCanBeAttended(intervals));
+//		Assert.assertFalse(mergeIntervals(intervals));
 	}
 	
 	/* Sort the data by end time
@@ -71,15 +74,25 @@ public class P108_AttendAllMeetings {
 	 * return true
 	 */
 	
-	private boolean isAllMeetingsCanBeAttended(int[][] intervals) {
-		Arrays.sort(intervals,(a,b)->{
-			if(a[1]!=b[1]) return a[1]-b[1];
-			else return a[0]-b[0];});
-		int currentEnd = 0, nextStart = 1;
-		while(currentEnd<intervals.length-1) {
-			if(intervals[currentEnd++][1]>intervals[nextStart++][0]) return false;
+	private int[][] mergeIntervals(int[][] intervals) {
+		Arrays.sort(intervals, (i, j) -> {
+			if (i[0] != j[0])
+				return i[0] - j[0];
+			else
+				return i[1] - j[1];
+		});
+		List<List<Integer>> list = new ArrayList<>();
+		int startTime = intervals[0][0], endTime = intervals[0][1];
+		for (int i = 1; i < intervals.length; i++) {
+			if (intervals[i][0] <= endTime) {
+				endTime = Math.max(endTime, intervals[i][1]);
+
+			} else {
+				list.add(Arrays.asList(startTime, endTime));
+				startTime = intervals[i][0];
+				endTime = intervals[i][1];
+			}
 		}
-		return true;
-		
+		return new int[][] {};
 	}
 }

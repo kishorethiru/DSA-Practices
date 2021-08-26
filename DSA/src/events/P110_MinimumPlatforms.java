@@ -59,6 +59,13 @@ public class P110_MinimumPlatforms {
 		String[] dep = {"1000", "1200", "1240"};
 		Assert.assertTrue(findMinumumRequiredPlatforms(arr,dep)==1);
 	}
+	
+	@Test
+	public void testData03() { // Edge
+		String[] arr = {"0900", "1100", "1235"};
+		String[] dep = {"1800", "1200", "1240"};
+		Assert.assertTrue(findMinumumRequiredPlatforms(arr,dep)==3);
+	}
 	private int findMinumumRequiredPlatforms(String[] arr, String[] dep) {
 		int minPlatforms =arr.length;
 		int[][] timings = new int[arr.length][2];
@@ -67,8 +74,8 @@ public class P110_MinimumPlatforms {
 			timings[i][1] = Integer.parseInt(dep[i]); 
 		}
 		Arrays.sort(timings,(a,b)->{
-			if(a[1]!=b[1]) return a[1]-b[1];
-			else return a[0]-b[0];});
+			if(a[0]!=b[0]) return a[0]-b[0];
+			else return a[1]-b[1];});
 		int currentTrain = 0;
 		for (int  i= 1; i < timings.length; i++) {
 			if(timings[i][0]>timings[currentTrain][1]){
