@@ -50,16 +50,19 @@ public class P115_CountToMakeParenthesisValid {
 	@Test
 	public void testData01() { // Positive
 		Assert.assertTrue(minAddToMakeValid("())") == 1);
+		Assert.assertTrue(minAddToMakeValidUsingString("())") == 1);
 	}
 
 	@Test
 	public void testData02() { // Negative
 		Assert.assertTrue(minAddToMakeValid("()(())") == 0);
+		Assert.assertTrue(minAddToMakeValidUsingString("()(())") == 0);
 	}
 
 	@Test
 	public void testData03() { // Edge
 		Assert.assertTrue(minAddToMakeValid("()))((") == 4);
+		Assert.assertTrue(minAddToMakeValidUsingString("()))((") == 4);
 	}
 	
 	/* 
@@ -82,5 +85,19 @@ public class P115_CountToMakeParenthesisValid {
 				stack.push(s.charAt(i));
 		}
 		return stack.size();
+	}
+	
+	private int minAddToMakeValidUsingString(String s) {
+		int openBracket = 0, closeBracket = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i)=='(') {
+				openBracket++;
+			}
+			else if(s.charAt(i) ==')') {
+				if(openBracket>0) openBracket--;
+				else closeBracket++;
+			}
+		}
+		return openBracket+closeBracket;
 	}
 }
