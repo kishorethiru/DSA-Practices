@@ -107,24 +107,18 @@ public class P101_RemoveDuplicateOfGivenK {
 			return s;
 		Stack<Character> stack = new Stack<>();
 		Stack<Integer> countStack = new Stack<>();
-		int count = 0;
 		for (int i = 0; i < s.length(); i++) {
-			if (stack.empty()) {
-				count++;
-				stack.push(s.charAt(i));
-				countStack.push(count);
-			} else {
-				if (stack.peek() == s.charAt(i))
-					count = countStack.peek() + 1;
-				else
-					count = 1;
-				stack.push(s.charAt(i));
-				countStack.push(count);
-				if (countStack.peek() == k) {
-					for (int j = 0; j < k; j++) {
-						stack.pop();
-						countStack.pop();
-					}
+			if(!stack.empty() && stack.peek() == s.charAt(i)){
+				countStack.push((countStack.peek()+1));
+			}
+			else countStack.push(1);
+			stack.push(s.charAt(i));
+			if(countStack.peek() == k) {
+				int temp = k;
+				while(temp!=0) {
+					countStack.pop();
+					stack.pop();
+					temp--;
 				}
 			}
 		}
