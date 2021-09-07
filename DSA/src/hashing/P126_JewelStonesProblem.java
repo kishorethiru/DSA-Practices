@@ -104,6 +104,5 @@ public class P126_JewelStonesProblem {
 			if (stonesHash.containsKey(c))
 				ret += stonesHash.get(c);
 		return ret;
-
 	}
 }
