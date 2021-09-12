@@ -69,27 +69,35 @@ public class P132_KDiffPairsInArray {
 		int[] input = { 1, 2, 3, 4, 5 };
 		Assert.assertTrue(findPairs(input, 3) == 2);
 	}
+	
+	@Test
+	public void testData04() { // Edge
+		int[] input = { -1,-2,-3};
+		Assert.assertTrue(findPairs(input, 2) == 1);
+	}
 
 	public int findPairs(int[] nums, int k) {
 		Arrays.sort(nums);
 		int left = 0, right = 1;
-		Set<Set<Integer>> op = new HashSet<>();
+		int count = 0;
+		int i1 = Integer.MIN_VALUE, i2 = Integer.MIN_VALUE;
 		while (right < nums.length) {
 			int dif = Math.abs(nums[right] - nums[left]);
 			if (right == left)
 				right++;
 			else if (dif == k) {
-				Set<Integer> tempSet = new HashSet<>();
-				tempSet.add(nums[left]);
-				tempSet.add(nums[right]);
+				if (i1 != nums[left] && i2 != nums[right]) {
+					i1 = nums[left];
+					i2 = nums[right];
+					count++;
+				}
 				right++;
-				op.add(tempSet);
 			} else if (dif < k)
 				right++;
 			else
 				left++;
 		}
-		return op.size();
+		return count;
 	}
 	
 	public int findPairsUsingHM(int[] nums, int k) {

@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P112_TrappingRainWater {
+public class P133_TrappingRainWater {
 	/*
 		Problem Statement
 			Given n non-negative integers representing an elevation map where the 
