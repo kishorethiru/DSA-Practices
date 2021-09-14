@@ -58,6 +58,7 @@ public class P22_RemoveDuplicatesMoreThanTwice {
 	@Test
 	public void testData04(){			 // Edge
 		int [] input = {0,0,1,1,1,1,2,3,3};
+		removeDuplicates(input);
 		Assert.assertTrue(findCountRemovingAtmostDuplicates(input)==7);
 	}
 
@@ -98,5 +99,27 @@ public class P22_RemoveDuplicatesMoreThanTwice {
 		return count;
 	}
 	
+	 public int removeDuplicates(int[] nums) {
+	        int left = 0, right = 1, dupCount = 1;
+	        while(right < nums.length){
+	            if(nums[left] == nums[right]){
+	                dupCount++;
+	                if(dupCount <= 2) {
+	                    nums[left] = nums[right];
+	                    left++;
+	                    right++;
+	                }
+	                else if(dupCount > 2){
+	                    right++;
+	                }
+	            }
+	            else {
+	                dupCount = 1;
+	                nums[++left] = nums[right++];
+	            }
+	        }
+	        return left+1;
+	        
+	    }
 
 }

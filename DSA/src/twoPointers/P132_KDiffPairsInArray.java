@@ -72,7 +72,7 @@ public class P132_KDiffPairsInArray {
 	
 	@Test
 	public void testData04() { // Edge
-		int[] input = { -1,-2,-3};
+		int[] input = {-1,-2,-3};
 		Assert.assertTrue(findPairs(input, 2) == 1);
 	}
 	
@@ -105,6 +105,7 @@ public class P132_KDiffPairsInArray {
 					i2 = nums[right];
 					count++;
 				}
+				left++;
 				right++;
 			} else if (dif < k)
 				right++;
