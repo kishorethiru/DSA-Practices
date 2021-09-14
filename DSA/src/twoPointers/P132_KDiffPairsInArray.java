@@ -75,7 +75,21 @@ public class P132_KDiffPairsInArray {
 		int[] input = { -1,-2,-3};
 		Assert.assertTrue(findPairs(input, 2) == 1);
 	}
-
+	
+	/*
+	 *  Sort the input
+		Initialize two pointers as left as 0 and right as 1 (Equi directional)
+		Initialize count for the return value and i1 and i2 to store the last found value - (This i added when one of the test case got failed)
+		Iterate till right is within length
+			a) Find the absolute diff
+			b) if(left == right) increment right (as we should have same index value)
+			c) else if(absolute value == k) and not matching with previous value i1 and i2 increment count, or else increment right alone.
+			d) else if diff is less than k increment right
+			e) else increment left
+		return count
+		Time : O(nlogn)
+		Space : O(n)
+	 */
 	public int findPairs(int[] nums, int k) {
 		Arrays.sort(nums);
 		int left = 0, right = 1;
