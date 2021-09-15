@@ -66,6 +66,11 @@ public class P31_FindUniqueLongestSubstring {
 		String s = "pwwkew";
 		Assert.assertTrue(findLongestSubstring(s) == 3);
 	}   
+	@Test
+	public void testData04(){			 // Edge
+		String s = "unique";
+		Assert.assertTrue(findLongestSubstring(s) == 4);
+	}   
 	/* Initialize left, max = 0
 	 * Initialize int[] of 128 length - asciiArr
 	 * Iterate the input
