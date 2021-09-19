@@ -26,7 +26,7 @@ public class P138_FindMinimumBalancedString {
 	}
 	@Test
 	public void example4() {
-		String S = "bBAb";
+		String S = "HkhBubUYy";
 		System.out.println(findBalanced(S));
 	}
 
@@ -97,7 +97,8 @@ public class P138_FindMinimumBalancedString {
 					left++;
 				}
 			}
-			if(!lowerTemp.isEmpty() && !upperTemp.isEmpty() && lowerTemp.equals(upperTemp)) return right-left+1;
+			if(!lowerTemp.isEmpty() && !upperTemp.isEmpty() && lowerTemp.equals(upperTemp))
+					 return right-left+1;
 			right++;
 		}
 		return -1;

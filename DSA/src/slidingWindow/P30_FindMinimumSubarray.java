@@ -107,28 +107,28 @@ public class P30_FindMinimumSubarray {
 	}
 	
 	
-	/* Initialize left , right as 0, min  and sum = 0 index value
-	 * Iterate till right < input.length
-	 *  Add the value of right to sum
-	 *  if sum >= target
-	 *    Subtract the value of left from sum and increment left++ 
-	 *  Compare and store min
+	/* Initialize left as 0, right as 0 , length as length + 1 and sum as 0
+	 * Iterate right < input length
+	 *   Add the value of right to sum
+	 *   untill sum>= target 
+	 *   	find the smallest distance of length and update
+	 *   	subtract value of left from sum and increment left
+	 *   Check if the length is updated from initialized value if yes
+	 *   return updated else 0
 	 * Time : O(n)
 	 * Space : O(1)
 	 */
 	
 	private int findMinimumSubarray(int[] input, int target) {
-		int left = 0,  right = 0, min = Integer.MAX_VALUE, sum = 0;
-		boolean isTargetFound = false;
-		if(sum>=target) return 1;
-		while(right < input.length) {
-			sum += input[right++]; 
-			while (sum >= target){
-				isTargetFound = true;
-				sum -= input[left++];
-			}
-			min = Math.min(min, right-left+1);
-		}
-		return isTargetFound ? min : 0;
+		int left = 0, right = 0, length = input.length+1,sum = 0 ;
+        while(right < input.length){
+            sum += input[right];
+            while(sum>=target) {
+                if(right-left+1<length) length = right-left+1;
+                sum -= input[left++];
+            }
+            right++;
+        }
+        return (length == input.length +1) ? 0 : length;
 	}
 }
