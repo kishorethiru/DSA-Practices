@@ -39,27 +39,37 @@ public class P65_FindSingleValue {
 	
 	@Test
     public void testData04() {
-        int[] input = {1,1,2,2,4,8,8};
-        Assert.assertTrue(findNonDuplicateNumber(input)==4);
+        int[] input = {1,2,2,3,3};
+        Assert.assertTrue(findNonDuplicateNumber(input)==1);
     }
     
-    /* Initialize low  = 0, high = length -1
-	 * Iterate till low crosses high
-	 *    Find midpoint and check if mid - 1 and mid + 1 is not equal to mid
-	 *    if mid and mid-1 value are equal high = mid-2
-	 *    else mid and mid+1 value are equal low = mid+2 
+    
+	/* Initialize low as 0 and high as length -1
+	 * Check Boundary conditions
+	 *  if high is zero return 0th element
+	 *  if 0 and 1 element are not same return 0th element
+	 *  if last and last - 1 are not same return last element
+	 *  Iterate till low<= high
+	 *   Get the mid element
+	 *   If mid and mid -1 and mid and mid+1 are not same return mid
+	 *   If(mid is odd check mid and mid -1 are equal || mid is even mid and mid+1 are same
+	 *   ) then low = mid+1;
+	 *   else high = mid-1
+	 * return 0;
 	 * 
 	 */
-	
 	private int findNonDuplicateNumber(int[] input) {
 		int low = 0, high = input.length-1;
-		while(low < high) {
-			int mid = (low+high)/2;
-			if(input[mid] != input[mid-1] && input[mid]!= input[mid+1]) return input[mid];
-			if(input[mid] == input[mid-1]) high = mid;
-			else low = mid;
+        if(high == 0) return input[0];
+        else if(input[0] != input[1]) return input[0];
+        else if(input[high] != input[high-1]) return input[high];
+		while(low <= high) {
+            int mid = (low + high) / 2;
+            if(input[mid] != input[mid+1] && input[mid]!= input[mid-1]) return input[mid];
+            if(mid%2 == 0 && input[mid] == input[mid+1] || mid %2 == 1 && input[mid] == input[mid-1]) low = mid+1;
+            else high = mid-1;
 		}
-		return 0;
+		return -1;
 	}
 
 }
