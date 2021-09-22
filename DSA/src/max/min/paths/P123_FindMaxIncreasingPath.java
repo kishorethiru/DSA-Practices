@@ -41,7 +41,8 @@ public class P123_FindMaxIncreasingPath {
 	// Test data(s)
 	@Test
 	public void testData01() { // Positive
-		int[] input = {1,3,2,5,4,6,7,8};
+		int[] input = {1,3,2,5,4,2,6,7,8};
+		System.out.println(Arrays.toString(findLongSeq(input)));
 		Arrays.equals(findMaxIncreasingSubArray(input), new int[] {1,2,4,6,7,8});
 	}
 
@@ -57,6 +58,25 @@ public class P123_FindMaxIncreasingPath {
 		Arrays.equals(findMaxIncreasingSubArray(input), new int[] {5,4,3});
 	}
 	
+	
+	@Test
+	public void testData04() { // Edge
+		int[] input = {3,5,6,2,5,4,19,5,6,7,12};
+		Arrays.equals(findMaxIncreasingSubArray(input), new int[] {5,4,3});
+	}
+	
+	
+	/* Using List
+	 * 1. Create a new list
+	 * 2. Add the 0 index value to list
+	 * 3. Iterate the input
+	 *    a) If the current index value is greater than last added add to list
+	 *    b) else find the if the current value is greater than any and get the index
+	 *    c) Push the value at the corresponding index
+	 * 4. return the list by converting to array
+	 * Time : O(nlogn)
+	 * Space : O(n)  
+	 */
 	private int[] findMaxIncreasingSubArray(int[] input) {
 		List<Integer> list = new ArrayList<>();
 		list.add(input[0]);
@@ -66,9 +86,8 @@ public class P123_FindMaxIncreasingPath {
 				list.add(num);
 			}
 			else {
-				int j = 0;
-				while(num>list.get(j++));
-				if(j==list.size()-1) list.set(j, num);
+				int j = bs(list,num);
+				list.set(j, num);
 			}
 		}
 		int[] ret = new int[list.size()];
@@ -76,5 +95,66 @@ public class P123_FindMaxIncreasingPath {
 		for(Integer i : list)
 			ret[index++] = i;
 		return ret;	
+	}
+	
+	public int bs(List<Integer> list, int num) {
+		int l = 0, h = list.size()-1;
+		while(l<h) {
+			int mid = l + (h-l)/2;
+			if(list.get(mid)>=num) h =mid;
+			else l = mid+1;
+		}
+		return h;
+	}
+	
+	/* Without using list
+	 * 
+	 */
+	public int[] findLongSeq(int[]nums) {
+		int[] arr = new int[nums.length];
+		arr[0] = nums[0];
+		int len = 1;
+		for(int i =1; i<nums.length; i++){
+			int cur = nums[i];
+			if(cur>arr[len-1]) arr[len++] = cur;
+			else {
+				arr[bsArr(arr,len-1,cur)] = cur;
+			}
+		}
+		return Arrays.copyOf(arr, len);
+	}
+	
+	public int bsArr(int[] nums, int len, int i) {
+		int l = 0, h = len ;
+		while(l<h) {
+			int mid = l + (h-l)/2;
+			if(nums[mid]>=i) h =mid;
+			else l = mid+1;
+		}
+		return h;
+	}	
+	/* Initialize a new array and fill value by 1
+	 * Iterate the input from 1 till length
+	 *   Iterarte inner nested loop from 0 and before i
+	 *    if the i value is > j and value of newarr[j]>=newArr[j] 
+	 *    update newArr[i] as newArr[j]+1
+	 * Iterate and find the max
+	 * return max;
+	 * Time : O(n^2)
+	 * Space : O(n)
+	 * 
+	 */
+	private int findLongestIncreasingSub(int[] nums) {
+		int[] iArr = new int[nums.length];
+		Arrays.fill(iArr, 1);
+		int max= 0;
+		for(int i = 1;i<nums.length;i++){
+			for(int j = 0;j <i; j++) {
+				if(nums[i]>nums[j] && iArr[i]<=iArr[j]) iArr[i] = iArr[j]+1; 
+			}
+		}
+		
+		for(int i : iArr) max = Math.max(max, i);
+		return max;
 	}
 }
