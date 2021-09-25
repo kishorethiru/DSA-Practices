@@ -73,10 +73,6 @@ public class P131_FindCharofK {
 		if(type.equals("max"))
 			Collections.sort(list, (a,b)-> b.getValue().compareTo(a.getValue()));
 		else Collections.sort(list, (a,b)-> a.getValue().compareTo(b.getValue()));
-//		
-//		for(int i = 0; i < list.size(); i++) {
-//			if(i+1 == k) return list.get(i).getKey();
-//		}
 		return list.get(k-1).getKey();
 	}
 	
