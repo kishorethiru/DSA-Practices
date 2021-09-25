@@ -87,6 +87,14 @@ public class P1_IntegerPalindrome {
 		Assert.assertFalse(isIntegerPalindromeUsingString(data));
 	}
 	
+	@Test
+	public void testData06()
+	{
+		int data = -121;
+		Assert.assertFalse(isIntegerPalindrome(data));
+		Assert.assertFalse(isIntegerPalindromeUsingString(data));
+	}
+	
 	
 	
 	/* create a variable reverseInput and initialize as 0
@@ -105,7 +113,8 @@ public class P1_IntegerPalindrome {
 	private boolean isIntegerPalindrome(int input) {
 		int reverseInput = 0;
 		if(input >0 && input < 10) return true; 
-		int inputData = input;
+		if(input % 10 == 0) return false;
+		long inputData = input;
 		boolean isInputNegative = false;
 		if (inputData < -9)
 		{
@@ -114,11 +123,12 @@ public class P1_IntegerPalindrome {
 		}
 		while(inputData!=0)
 		{
-			int remainder = inputData % 10;
+			int remainder = (int) (inputData % 10);
 			reverseInput = (reverseInput * 10) + remainder;
 			inputData = inputData / 10;
 			
 		}
+		if (reverseInput> Integer.MAX_VALUE || inputData <Integer.MIN_VALUE) return false;	
 		reverseInput = isInputNegative ? (reverseInput * -1) : reverseInput;
 		if (reverseInput == input) return true;
 		return false;

@@ -2,6 +2,9 @@ package stacks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.Stack;
 
 import org.junit.Assert;
@@ -82,7 +85,10 @@ public class P67_DecodeString {
 				}
 				stack.pop();
 				int k = 1;
-				if(!stack.empty() && Character.isDigit(stack.peek())) k = Character.getNumericValue(stack.pop());
+				String cal = "";
+				while(!stack.empty() && Character.isDigit(stack.peek())) 
+					cal += stack.pop();
+				k = Character.getNumericValue(stack.pop());
 				while(k > 0)
 				{
 					for (int j = list.size()-1; j >= 0 ; j--) {

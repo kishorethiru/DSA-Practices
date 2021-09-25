@@ -39,6 +39,7 @@ public class Remove5 {
 	public void testData01() { // Positive
 		int n =-12535;
 		Assert.assertTrue(removeFive(n)== -1235);
+		Assert.assertTrue(removeFiveSB(n)== -1235);
 	}
 
 	@Test
@@ -82,5 +83,18 @@ public class Remove5 {
 			}
 		}
 		return isNegative ? val*-1: val;
+	}
+	
+	private int removeFiveSB(int n) {
+		String s = Integer.toString(n);
+		int max = Integer.MIN_VALUE;
+		for(int i = 0; i < s.length(); i++) {
+			StringBuilder sb = new StringBuilder(s);
+			if(s.charAt(i) == '5') {
+				sb.deleteCharAt(i);
+				max = Math.max(Integer.parseInt(sb.toString()), max);
+			}
+		}
+		return max;
 	}
 }

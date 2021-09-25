@@ -133,6 +133,7 @@ public class P123_FindMaxIncreasingPath {
 		}
 		return h;
 	}	
+	
 	/* Initialize a new array and fill value by 1
 	 * Iterate the input from 1 till length
 	 *   Iterarte inner nested loop from 0 and before i
