@@ -106,10 +106,11 @@ public class P112_MergeOverlappingIntervals {
 		list.add(Arrays.asList(startTime,endTime));
 		int[][] retArr = new int[list.size()][2];
 		int index  = 0; 
-		for (List<Integer> eachList : list) {
-			retArr[index][0] = eachList.get(0);
-			retArr[index++][1] = eachList.get(1);
-		}
-		return retArr;
+		list.toArray(new int[list.size()][]);
+//		for (List<Integer> eachList : list) {
+//			retArr[index][0] = eachList.get(0);
+//			retArr[index++][1] = eachList.get(1);
+//		}
+		return list.toArray(new int[list.size()][]);
 	}
 }
