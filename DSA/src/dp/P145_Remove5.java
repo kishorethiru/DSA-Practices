@@ -7,16 +7,18 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class Remove5 {
+public class P145_Remove5 {
 	/*
 		Problem Statement
+		Given a string consists of number, remove 5 from the number
+		and return the max number
 	
 	*/
 
 	/*
 	   1. 
-	  Input(s) ? 
-		  Output ?
+	  	  Input(s) ?  String 
+		  Output ? int
 		  Constraint(s) ?
 	   
 	   2. Test data
