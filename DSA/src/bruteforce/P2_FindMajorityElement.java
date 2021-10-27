@@ -160,6 +160,7 @@ public class P2_FindMajorityElement
 	 *  Space : O(n)
 	 */
 	
+	@SuppressWarnings("unused")
 	private int findMajorityElementUsingMap(int[] data)
 	{
 		Map<Integer, Integer> inputData = new HashMap<>();
