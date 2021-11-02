@@ -6,16 +6,9 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P81_FibonacciSeries {
+public class P154_MutlipleTwoNums {
 	/*
 		Problem Statement
-		
-		 Find the fibonacci series of given number n
-		 
-		 1. Base condition n - times 
-		 2. 3 - 0 1 1 2
-		 3. 10 or 0
-		 4. Pattern -   
 	
 	*/
 
@@ -43,22 +36,22 @@ public class P81_FibonacciSeries {
 	// Test data(s)
 	@Test
 	public void testData01() { // Positive
-		System.out.println(findFibonacci(3));
+		System.out.println(multiplyTwoNums(4,4));
 	}
 
 	@Test
 	public void testData02() { // Negative
-		System.out.println(findFibonacci(1));
+		System.out.println(multiplyTwoNums(0,4));
 	}
 
 	@Test
 	public void testData03() { // Edge
-		System.out.println(findFibonacci(5));
+		System.out.println(multiplyTwoNums(4,1));
 	}
-	private int findFibonacci(int n) {
-		if(n == 0) return 0;
-		if(n == 2 || n == 1) return 1;
-		int  retVal= findFibonacci(n-1)+findFibonacci(n-2);
-		return retVal;
+	
+	private int multiplyTwoNums(int a , int b) {
+		if(b == 0 || a == 0) return 0;
+		if(b == 1) return a;
+		return a + multiplyTwoNums(a,b-1);
 	}
 }
