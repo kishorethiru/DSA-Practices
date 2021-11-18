@@ -56,7 +56,7 @@ public class P53_MergeLinkedList {
 			return n1;
 		while (n1 != null && n2 != null) {
 			if (n1.value < n2.value) {
-				current.next = n1;
+				current.next = n1; 
 				n1 = n1.next;
 			} else {
 				current.next = n2;
