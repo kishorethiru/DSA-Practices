@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P4_FindMissingElementProb2 {
+public class P16_FindMissingElementProb2 {
 /*
  * Given an array nums containing n distinct numbers in the range [0, n], return the 
  * only number in the range that is missing from the array.

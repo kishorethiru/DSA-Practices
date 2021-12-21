@@ -13,7 +13,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P144_FindSumCombinations {
+public class P12_FindSumCombinations {
 	/*
 		Problem Statement
 		

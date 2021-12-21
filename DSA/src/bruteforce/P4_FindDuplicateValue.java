@@ -7,7 +7,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P11_FindDuplicateValue {
+public class P4_FindDuplicateValue {
 	
 	/*
 	 * Given an integer array nums, return true if any value appears at

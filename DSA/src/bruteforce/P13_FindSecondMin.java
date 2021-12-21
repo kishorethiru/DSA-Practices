@@ -3,7 +3,7 @@ package bruteforce;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P52_FindSecondMin {
+public class P13_FindSecondMin {
 	
 	/* In the given array find the second min element
 	 *  

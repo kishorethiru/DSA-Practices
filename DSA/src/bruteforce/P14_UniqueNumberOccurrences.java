@@ -9,7 +9,7 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P5_UniqueNumberOccurrences {
+public class P14_UniqueNumberOccurrences {
 	/* Problem Statement
 	  * Given array of integers, write a function that returns true only if the number of occurrences
 	  * of each value in array is unique

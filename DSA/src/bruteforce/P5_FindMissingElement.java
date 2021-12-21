@@ -3,7 +3,7 @@ package bruteforce;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P4_FindMissingElement {
+public class P5_FindMissingElement {
 /*
  * Given an array nums containing n distinct numbers in the range [0, n], return the 
  * only number in the range that is missing from the array.

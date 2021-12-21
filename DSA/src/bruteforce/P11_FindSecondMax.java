@@ -3,7 +3,7 @@ package bruteforce;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P51_FindSecondMax {
+public class P11_FindSecondMax {
 	
 	/* In the given array find the second max element
 	 *  
