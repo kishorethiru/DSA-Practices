@@ -1,9 +1,9 @@
-package undef;
+package slidingWindow;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P32_FindMinInSubarrayKandane {
+public class P159_FindMinInSubarrayKandane {
 	
 	@Test
 	public void testData01(){            // Positive

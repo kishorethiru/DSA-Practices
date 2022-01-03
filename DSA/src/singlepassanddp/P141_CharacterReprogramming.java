@@ -1,9 +1,9 @@
-package undef;
+package singlepassanddp;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P62_CharacterReprogramming {
+public class P141_CharacterReprogramming {
 	
 	/* A control device has 4 buttons U,D,L,R. Their movement needs to be reduced
 	 * by deleting unnecessary movements

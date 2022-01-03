@@ -1,9 +1,9 @@
-package undef;
+package singlepassanddp;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class P18_FindMaximumAverageSubarraySum 
+public class P140_FindMaximumAverageSubarraySum 
 {
 	/*
 	 * You are given an integer array nums consisting of n elements, and an integer k.
