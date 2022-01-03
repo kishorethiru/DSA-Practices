@@ -1,0 +1,10 @@
+Location   Card Type          HW State        SW State   Config State
+--------------------------------------------------------------------
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
+0/0        NCS1K4-LC-FILLER   PRESENT          N/A       NSHUT
