@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P125_FindMinimumDifference {
+public class P132_FindMinimumDifference {
 	/*
 		Problem Statement
 	

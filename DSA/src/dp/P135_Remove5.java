@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P145_Remove5 {
+public class P135_Remove5 {
 	/*
 		Problem Statement
 		Given a string consists of number, remove 5 from the number

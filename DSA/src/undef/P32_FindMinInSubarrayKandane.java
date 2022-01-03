@@ -1,4 +1,4 @@
-package slidingWindow;
+package undef;
 
 import org.junit.Assert;
 import org.junit.Test;

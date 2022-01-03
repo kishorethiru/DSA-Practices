@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P137_FindDuplicateNumber {
+public class P133_FindDuplicateNumber {
 	/*
 		Problem Statement
 		Given an array of integers nums containing n + 1 integers where 

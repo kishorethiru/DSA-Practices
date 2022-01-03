@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author Kishore
  *
  */
-public class P123_FindMaxIncreasingPath {
+public class P111_FindMaxIncreasingPath {
 	/*
 		Problem Statement
 		In the given input, find the max increasing path 
